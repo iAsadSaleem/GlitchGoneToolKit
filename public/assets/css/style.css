@@ -1,0 +1,448 @@
+*, *:before, *:after{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Nunito', sans-serif;
+}
+
+body{
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Nunito', sans-serif;
+  border-radius: 50%;
+}
+.signin{
+    color: white;
+    width: 100%;
+    font-size: 30px;
+    text-align: center;
+}
+.signup{
+    color: white;
+    width: 100%;
+    font-size: 30px;
+    text-align: center;
+}
+input, button{
+  border:none;
+  background: #0a0a0a;
+  color: white;
+}
+
+.cont{
+  overflow: hidden;
+  position: relative;
+ width: 1100px;   /* was 900px */
+  height: 650px;   /* was 550px */
+  background:#0d0b12;
+  box-shadow: 0 19px 38px rgba(62, 48, 255, 0.3), 0 15px 12px rgba(22, 29, 97, 0.22);
+    border-radius: 15px;
+}
+
+.form{
+  position: relative;
+  width: 800px;    /* was 640px */
+      height: 100%;
+  padding: 70px 40px;  /* more breathing space */
+  -webkit-transition:-webkit-transform 1.2s ease-in-out;
+  transition: -webkit-transform 1.2s ease-in-out;
+  transition: transform 1.2s ease-in-out;
+  transition: transform 1.2s ease-in-out, -webkit-transform 1.2s ease-in-out;
+}
+
+h2{
+  width: 100%;
+  font-size: 30px;
+  text-align: center;
+}
+
+label{
+  display: block;
+  width: 340px;    /* was 260px */
+  margin: 25px auto 0;
+  text-align: center;
+}
+
+label span{
+  font-size: 14px;
+  font-weight: 600;
+  color: #dbdbdb;
+  text-transform: uppercase;
+}
+
+input{
+  height: 42px;
+  display: block;
+  width: 100%;
+  margin-top: 5px;
+  font-size: 18px;
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(109, 93, 93, 0.4);
+  text-align: center;
+  font-family: 'Nunito', sans-serif; 
+  border-radius: 10px;
+}
+input:focus {
+  outline: none;
+  border-bottom: 2px solid #5d22ff;
+  box-shadow: 0 1px 0 #5d22ff;
+}
+
+button{
+  display: block;
+  margin: 0 auto;
+  width: 340px;    /* match label width */
+  height: 44px;    /* was 36px */
+  border-radius: 30px;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.submit{
+  margin-top: 40px;
+  margin-bottom: 30px;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-family: 'Nunito', sans-serif;
+  background: #191c24;
+  transition: .5s;
+  letter-spacing: 1px;
+}
+
+.submit:hover{
+  transition: .5s;
+  background: #110642;
+}
+
+.forgot-pass{
+  margin-top: 15px;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 600;
+  color: #0c0101;
+  cursor: pointer;
+}
+
+.forgot-pass:hover{
+  color: red;
+}
+
+.social-media{
+  width: 100%;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.social-media ul{
+  list-style: none;
+}
+
+.social-media ul li{
+  display: inline-block;
+  cursor: pointer;
+  margin: 25px 10px;
+}
+
+.social-media img{
+  width: 80px;
+  height: 80px;
+}
+
+.sub-cont{
+  overflow: hidden;
+  position: absolute;
+  left: 838px;
+  top: 0;
+  width: 900px;
+  height: 100%;
+  padding-left: 260px;
+  background: #0d0b12;
+  -webkit-transition: -webkit-transform 1.2s ease-in-out;
+  transition: -webkit-transform 1.2s ease-in-out;
+  transition: transform 1.2s ease-in-out;
+}
+
+.cont.s-signup .sub-cont{
+  -webkit-transform:translate3d(-838px, 0, 0);
+          transform:translate3d(-838px, 0, 0);
+}
+
+.img{
+  overflow: hidden;
+  z-index: 2;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 260px;
+  height: 100%;
+  padding-top: 360px;
+}
+
+.img:before{
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 900px;
+  height: 100%;
+  background-image: url(images/bg.jpg);
+  background-size: cover;
+  transition: -webkit-transform 1.2s ease-in-out;
+  transition: transform 1.2s ease-in-out, -webkit-transform 1.2s ease-in-out;
+}
+
+.img:after{
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: #191c24;
+}
+
+.cont.s-signup .img:before{
+  -webkit-transform:translate3d(838px, 0, 0);
+          transform:translate3d(838px, 0, 0);
+}
+
+.img-text{
+  z-index: 2;
+  position: absolute;
+  left: 0;
+  top: 50px;
+  width: 100%;
+  padding: 0 20px;
+  text-align: center;
+  color: #fff;
+  -webkit-transition:-webkit-transform 1.2s ease-in-out;
+  transition: -webkit-transform 1.2s ease-in-out;
+  transition: transform 1.2s ease-in-out, -webkit-transform 1.2s ease-in-out;
+}
+
+.img-text h2{
+  margin-bottom: 10px;
+  font-weight: normal;
+}
+
+.img-text p{
+  font-size: 22px;
+  line-height: 1.5;
+}
+
+.cont.s-signup .img-text.m-up{
+  -webkit-transform:translateX(520px);
+          transform:translateX(520px);
+}
+
+.img-text.m-in{
+  -webkit-transform:translateX(-520px);
+          transform:translateX(-520px);
+}
+
+.cont.s-signup .img-text.m-in{
+  -webkit-transform:translateX(0);
+          transform:translateX(0);
+}
+
+
+.sign-in{
+  padding-top: 65px;
+  -webkit-transition-timing-function:ease-out;
+          transition-timing-function:ease-out;
+}
+
+.cont.s-signup .sign-in{
+  -webkit-transition-timing-function:ease-in-out;
+          transition-timing-function:ease-in-out;
+  -webkit-transition-duration:1.2s;
+          transition-duration:1.2s; 
+  -webkit-transform:translate3d(1137px, 0, 0);
+          transform:translate3d(1137px, 0, 0);
+}
+
+.img-btn{
+  overflow: hidden;
+  z-index: 2;
+  position: relative;
+  width: 100px;
+  height: 36px;
+  margin: 0 auto;
+  background: transparent;
+  color: #fff;
+  text-transform: uppercase;
+  font-size: 15px;
+  cursor: pointer;
+  top: 200px;
+}
+
+.img-btn:after{
+  content: '';
+  z-index: 2;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  border: 2px solid #fff;
+  border-radius: 30px;
+}
+
+.img-btn span{
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-pack:center;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  -webkit-transition:-webkit-transform 1.2s;
+  transition: -webkit-transform 1.2s;
+  transition: transform 1.2s;
+  transition: transform 1.2s, -webkit-transform 1.2s;;
+}
+
+.img-btn span.m-in{
+  -webkit-transform:translateY(-72px);
+          transform:translateY(-72px);
+}
+
+.cont.s-signup .img-btn span.m-in{
+  -webkit-transform:translateY(0);
+          transform:translateY(0);
+}
+
+.cont.s-signup .img-btn span.m-up{
+  -webkit-transform:translateY(72px);
+          transform:translateY(72px);
+}
+
+.sign-up{
+  -webkit-transform:translate3d(-900px, 0, 0);
+          transform:translate3d(-900px, 0, 0);
+}
+
+.cont.s-signup .sign-up{
+  -webkit-transform:translate3d(0, 0, 0);
+          transform:translate3d(0, 0, 0);
+}
+
+@media (max-width: 768px) {
+
+  body {
+    height: auto;
+    padding: 20px;
+  }
+
+  .cont {
+    width: 100%;
+    height: auto;
+    flex-direction: column;
+    position: relative;
+    z-index: 2;
+  }
+
+  /* Hide animated side image */
+  .img {
+    display: none;
+  }
+
+  .sub-cont {
+    position: relative;
+    width: 100%;
+    left: 0;
+    padding-left: 0;
+    transform: none !important;
+  }
+
+  .form {
+    width: 100%;
+    height: auto;
+    padding: 40px 20px;
+    transform: none !important;
+  }
+
+  .sign-in,
+  .sign-up {
+    transform: none !important;
+  }
+
+  /* Stack signup under login */
+  .sign-up {
+    display: none;
+  }
+
+  .cont.s-signup .sign-up {
+    display: block;
+  }
+
+  .cont.s-signup .sign-in {
+    display: none;
+  }
+
+  label,
+  button {
+    width: 100%;
+  }
+
+  input {
+    font-size: 16px;
+  }
+
+  .submit {
+    width: 100%;
+  }
+}
+@media (max-width: 480px) {
+
+  .signin,
+  .signup {
+  font-size: 34px;  /* was 30px */
+  }
+
+  label span {
+    font-size: 12px;
+  }
+
+  input {
+    padding: 12px 0;
+  }
+
+  .submit {
+    font-size: 14px;
+    height: 42px;
+  }
+}
+.bg-video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -2;
+}
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.65); /* adjust darkness */
+  z-index: -1;
+}
+.gradient-text {
+  background: linear-gradient(90deg, #00c853, #64dd17);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 700;
+  text-shadow: 0 0 10px rgba(0, 200, 83, 0.4);
+}

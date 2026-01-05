@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Login & Registration Form</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="./assets/css/style.css">
+  <link href="https://fonts.googleapis.com/css?family=Nunito:400,600,700,800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <video class="bg-video" autoplay muted loop playsinline>
+  <source src="./assets/videos/bg-video2.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+  <div class="cont">
+    <div class="form sign-in">
+      <h2 class="signin">Sign In</h2>
+      <label>
+        <span>Email Address</span>
+        <input type="email" id="loginEmail" name="email">
+      </label>
+      <label>
+        <span>Password</span>
+        <input type="password" id="loginPassword" name="password">
+      </label>
+      <button class="submit" id="loginBtn" type="button">Sign In</button>
+     
+
+      <div class="social-media">
+        <ul>
+          <li><img src="./assets/images/facebook.png"></li>
+          <li><img src="./assets/images/x.png"></li>
+          <li><img src="./assets/images/google.png"></li>
+          <!-- <li><img src="images/instagram.png"></li> -->
+        </ul>
+      </div>
+    </div>
+
+    <div class="sub-cont">
+      <div class="img">
+        <div class="img-text m-up">
+          <h1>New here?</h1>
+            <p class="paragraph">
+            Join  <span class="gradient-text">GlitchGoneToolKit</span> to unlock advanced customization for your GoHighLevel websites. Create stunning layouts, fine-tune performance, and tailor every detail to your brand by signing up today.
+            </p>
+        </div>
+        <div class="img-text m-in">
+          <h1>One of us?</h1>
+          <p>just sign in</p>
+        </div>
+        <div class="img-btn">
+          <span class="m-up">Sign Up</span>
+          <span class="m-in">Sign In</span>
+        </div>
+      </div>
+      <div class="form sign-up">
+        <h2 class="signup">Sign Up</h2>
+        <label>
+          <span>Name</span>
+          <input type="text" id="signupName">
+        </label>
+        <label>
+          <span>Email</span>
+          <input type="email" id="signupEmail">
+        </label>
+        <label>
+          <span>Password</span>
+          <input type="password" id="signupPassword">
+        </label>
+        <label>
+          <span>Confirm Password</span>
+          <input type="password" id="signupConfirmPassword">
+        </label>
+        <button type="button" id="signupBtn" class="submit">Sign Up Now</button>
+      </div>
+    </div>
+  </div>
+  <script src="./assets/js/auth.js"></script>
+<script type="text/javascript" src="./assets/js/script.js"></script>
+</body>
+</html>
