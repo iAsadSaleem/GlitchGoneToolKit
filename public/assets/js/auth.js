@@ -58,67 +58,110 @@ document.addEventListener("DOMContentLoaded", () => {
       const email = document.getElementById("signupEmail").value;
       const password = document.getElementById("signupPassword").value;
       const confirmPassword = document.getElementById("signupConfirmPassword").value;
+   
+     
 
       if (password !== confirmPassword) {
         alert("Passwords do not match");
         return;
       }
+       Loader.show();
+      signupBtn.disabled = true;
+      try{
 
-      const res = await fetch("/api/auth/signup", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, email, password })
-      });
+        const res = await fetch("/api/auth/signup", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ name, email, password })
+        });
+      
 
       const data = await res.json();
       alert(data.message);
 
-      if (res.ok) {
-        window.location.href = "/login-signup.html";
+       if (res.ok) {
+            setTimeout(() => {
+              window.location.href = "/login-signup.html";
+            }, 500); // smooth transition
+          } else {
+            Loader.hide();
+            signupBtn.disabled = false;
+          }
+      } catch (err) {
+        alert("Something went wrong");
+        Loader.hide();
+        signupBtn.disabled = false;
       }
     });
   }
 
   // ================= LOGIN =================
   const loginBtn = document.getElementById("loginBtn");
+if (loginBtn) {   // <-- check it exists
+  loginBtn.addEventListener("click", async () => {
+    const email = document.getElementById("loginEmail").value;
+    const password = document.getElementById("loginPassword").value;
 
-  if (loginBtn) {
-    loginBtn.addEventListener("click", async () => {
-      const email = document.getElementById("loginEmail").value;
-      const password = document.getElementById("loginPassword").value;
+    Loader.show();
+    loginBtn.disabled = true;
 
+    try {
       const res = await fetch("/api/auth/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password })
       });
 
-      const data = await res.json();
-      alert(data.message);
-
       if (res.ok) {
-        window.location.href = "/index.html";
+        setTimeout(() => {
+          window.location.href = "/index.html";
+        }, 500);
+      } else {
+        Loader.hide();
+        loginBtn.disabled = false;
       }
-    });
-  }
+    } catch (err) {
+      alert("Something went wrong");
+      Loader.hide();
+      loginBtn.disabled = false;
+    }
+  });
+}
 
   // ================= LOGOUT =================
-  document.addEventListener("click", async (e) => {
-    if (!e.target.closest("#logoutBtn")) return;
+ // ================= LOGOUT =================
+document.addEventListener("click", async (e) => {
+  const logoutBtn = e.target.closest("#logoutBtn");
+  if (!logoutBtn) return; // exit if no logout button clicked
 
-    e.preventDefault();
+  e.preventDefault();
+  
+  // Show loader instead of alert
+  Loader.show();
 
+  try {
     const res = await fetch("/api/auth/logout", {
       method: "POST",
       credentials: "include"
     });
 
-    const data = await res.json();
-    alert(data.message);
+    // Wait a short moment for smooth UX
+    setTimeout(() => {
+      if (res.ok) {
+        // Redirect to login page after logout
+        window.location.href = "/login-signup.html";
+      } else {
+        // Hide loader if something goes wrong
+        Loader.hide();
+      }
+    }, 500);
 
-    if (res.ok) {
-      window.location.href = "/login-signup.html";
-    }
-  });
+  } catch (err) {
+    // Hide loader if error occurs
+    Loader.hide();
+    console.error("Logout failed", err);
+  }
+});
+
 
 });
