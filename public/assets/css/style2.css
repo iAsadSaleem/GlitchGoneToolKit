@@ -20653,9 +20653,9 @@ div.tagsinput {
       .sidebar .sidebar-brand-wrapper .sidebar-brand:active, .sidebar .sidebar-brand-wrapper .sidebar-brand:focus, .sidebar .sidebar-brand-wrapper .sidebar-brand:hover {
         color: #252b3e; }
       .sidebar .sidebar-brand-wrapper .sidebar-brand img {
-        width: calc(244px - 120px);
+        width: calc(332px - 120px);
         max-width: 100%;
-        height: 28px;
+        height: 131px;
         margin: auto;
         vertical-align: middle; }
       .sidebar .sidebar-brand-wrapper .sidebar-brand.brand-logo-mini {
@@ -21159,7 +21159,7 @@ div.tagsinput {
   top: 0;
   left: 0;
   width: 100%;
-  padding: 10px 12px;
+  /* padding: 10px 12px; */
   background: linear-gradient(
     to bottom,
     rgba(0,0,0,0.65),
@@ -21168,15 +21168,16 @@ div.tagsinput {
 }
 
 .theme-title-overlay h3 {
-   position: relative;
-    left: -12px !important;
+    align-items: center;
+    position: relative;
     text-align: center;
-    height: 24px;
-    width: 242px;
+    height: 34px;
+    width: 25rem !important;
     background-color: #353535b3;
     color: #a5a5a5;
     font-size: 15px;
     font-weight: 600;
+    padding: 3px 0px 0px 0px;
 }
 .selective-button {
   min-width: 98px !important; 
