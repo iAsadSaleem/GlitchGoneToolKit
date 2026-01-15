@@ -165,3 +165,29 @@ document.addEventListener("click", async (e) => {
 
 
 });
+document.addEventListener("DOMContentLoaded", async () => {
+  try {
+    const res = await fetch("/api/auth/getprofile", {
+      method: "GET",
+      credentials: "include"
+    });
+
+    if (!res.ok) return;
+
+    const data = await res.json();
+    const userName = data.user.name;
+
+    // Delay to ensure navbar is loaded
+    setTimeout(() => {
+      const navbarNameEl = document.querySelector(".navbar-profile-name");
+      if (navbarNameEl) navbarNameEl.textContent = userName;
+
+      const profileNameEl = document.querySelector(".profile-name h5");
+      if (profileNameEl) profileNameEl.textContent = userName;
+    }, 100); // 100ms delay
+
+  } catch (err) {
+    console.error("Failed to load profile", err);
+  }
+});
+

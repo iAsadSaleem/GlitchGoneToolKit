@@ -72,6 +72,26 @@ exports.login = async (req, res) => {
     res.status(500).json({ message: "Server error" });
   }
 };
+exports.getProfile = async (req, res) => {
+  try {
+    // Check session
+    if (!req.session.userId) {
+      return res.status(401).json({ message: "Unauthorized" });
+    }
+
+    const user = await User.findById(req.session.userId)
+      .select("name email"); // only what you need
+
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+    res.json({ user });
+
+  } catch (error) {
+    res.status(500).json({ message: "Server error" });
+  }
+};
+
 exports.logout = (req, res) => {
   req.session.destroy(err => {
     if (err) {
