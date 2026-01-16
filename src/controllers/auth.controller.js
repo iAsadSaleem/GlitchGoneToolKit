@@ -64,9 +64,17 @@ exports.login = async (req, res) => {
     }
 
     // Save user in session
-    req.session.userId = user._id;
+     req.session.userId = user._id;
 
-    res.json({ message: "Login successful" });
+    // ✅ FORCE SAVE SESSION (IMPORTANT FOR VERCEL)
+    req.session.save(err => {
+      if (err) {
+        console.error("Session save error:", err);
+        return res.status(500).json({ message: "Session save failed" });
+      }
+
+      res.json({ message: "Login successful" });
+    });
 
   } catch (error) {
     res.status(500).json({ message: "Server error" });

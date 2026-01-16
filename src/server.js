@@ -14,17 +14,20 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.set("trust proxy", 1); // REQUIRED for Vercel
 
 // ---------- SESSION (MUST BE BEFORE ROUTES) ----------
 app.use(session({
   name: "glitchgone.sid",
-  secret: process.env.SESSION_SECRET || "glitchgone_secret_key",
+  secret: process.env.SESSION_SECRET,
   resave: false,
   saveUninitialized: false,
+  proxy: true,
   cookie: {
-    secure: false,     // true only in HTTPS
     httpOnly: true,
-    maxAge: 1000 * 60 * 60 // 1 hour
+    secure: true,          // HTTPS only
+    sameSite: "none",      // REQUIRED for Vercel
+    maxAge: 1000 * 60 * 60 * 24 * 7 // ✅ 7 days persistent
   }
 }));
 
