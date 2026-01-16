@@ -165,6 +165,7 @@ document.addEventListener("click", async (e) => {
 
 
 });
+
 document.addEventListener("DOMContentLoaded", async () => {
   try {
     const res = await fetch("/api/auth/getprofile", {
