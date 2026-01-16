@@ -25,11 +25,12 @@ app.use(session({
   proxy: true,
   cookie: {
     httpOnly: true,
-    secure: true,          // HTTPS only
-    sameSite: "none",      // REQUIRED for Vercel
-    maxAge: 1000 * 60 * 60 * 24 * 7 // ✅ 7 days persistent
+    secure: process.env.NODE_ENV === "production", // ✅ FIX
+    sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
+    maxAge: 1000 * 60 * 60 * 24 * 7
   }
 }));
+
 
 // ---------- AUTH GUARD ----------
 const isAuthenticated = (req, res, next) => {
