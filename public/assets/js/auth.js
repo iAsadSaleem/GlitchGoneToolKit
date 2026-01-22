@@ -96,11 +96,68 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // ================= LOGIN =================
-  const loginBtn = document.getElementById("loginBtn");
-if (loginBtn) {   // <-- check it exists
+//   const loginBtn = document.getElementById("loginBtn");
+// if (loginBtn) {   // <-- check it exists
+//   loginBtn.addEventListener("click", async () => {
+//     const email = document.getElementById("loginEmail").value;
+//     const password = document.getElementById("loginPassword").value;
+
+//     Loader.show();
+//     loginBtn.disabled = true;
+
+//     try {
+//       const res = await fetch("/api/auth/login", {
+//         method: "POST",
+//         headers: { "Content-Type": "application/json" },
+//         body: JSON.stringify({ email, password })
+//       });
+
+//       if (res.ok) {
+//         setTimeout(() => {
+//           window.location.href = "/index.html";
+//         }, 500);
+//       } else {
+//         Loader.hide();
+//         loginBtn.disabled = false;
+//       }
+//     } catch (err) {
+//       alert("Something went wrong");
+//       Loader.hide();
+//       loginBtn.disabled = false;
+//     }
+//   });
+// }
+const loginBtn = document.getElementById("loginBtn");
+
+if (loginBtn) {
   loginBtn.addEventListener("click", async () => {
-    const email = document.getElementById("loginEmail").value;
-    const password = document.getElementById("loginPassword").value;
+    const emailInput = document.getElementById("loginEmail");
+    const passwordInput = document.getElementById("loginPassword");
+
+    const emailError = document.getElementById("emailError");
+    const passwordError = document.getElementById("passwordError");
+
+    // Reset errors
+    emailError.innerText = "";
+    passwordError.innerText = "";
+    emailInput.classList.remove("input-error");
+    passwordInput.classList.remove("input-error");
+
+    const email = emailInput.value.trim();
+    const password = passwordInput.value.trim();
+
+    // Empty validation
+    if (!email || !password) {
+      if (!email) {
+        emailError.innerText = "Please enter email";
+        emailInput.classList.add("input-error");
+      }
+      if (!password) {
+        passwordError.innerText = "Please enter password";
+        passwordInput.classList.add("input-error");
+      }
+      return;
+    }
 
     Loader.show();
     loginBtn.disabled = true;
@@ -112,18 +169,37 @@ if (loginBtn) {   // <-- check it exists
         body: JSON.stringify({ email, password })
       });
 
-      if (res.ok) {
-        setTimeout(() => {
-          window.location.href = "/index.html";
-        }, 500);
-      } else {
+      const data = await res.json();
+
+      if (!res.ok) {
         Loader.hide();
         loginBtn.disabled = false;
+
+        if (data.field === "email") {
+          emailError.innerText = data.message;
+          emailInput.classList.add("input-error");
+        }
+
+        if (data.field === "password") {
+          passwordError.innerText = data.message;
+          passwordInput.classList.add("input-error");
+        }
+
+        if (data.field === "both") {
+          emailError.innerText = data.message;
+          passwordError.innerText = data.message;
+          emailInput.classList.add("input-error");
+          passwordInput.classList.add("input-error");
+        }
+        return;
       }
+
+      window.location.href = "/index.html";
+
     } catch (err) {
-      alert("Something went wrong");
       Loader.hide();
       loginBtn.disabled = false;
+      alert("Something went wrong");
     }
   });
 }

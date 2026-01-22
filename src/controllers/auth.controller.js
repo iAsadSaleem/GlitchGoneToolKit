@@ -53,26 +53,36 @@ exports.login = async (req, res) => {
   try {
     const { email, password } = req.body;
 
+    // Empty validation (extra safety)
+    if (!email || !password) {
+      return res.status(400).json({
+        field: "both",
+        message: "Email and password are required"
+      });
+    }
+
     const user = await User.findOne({ email });
     if (!user) {
-      return res.status(400).json({ message: "Invalid email or password" });
+      return res.status(400).json({
+        field: "email",
+        message: "Email not found"
+      });
     }
 
     const isMatch = await bcrypt.compare(password, user.password);
     if (!isMatch) {
-      return res.status(400).json({ message: "Invalid email or password" });
+      return res.status(400).json({
+        field: "password",
+        message: "Password does not match"
+      });
     }
 
-    // Save user in session
-     req.session.userId = user._id;
+    req.session.userId = user._id;
 
-    // ✅ FORCE SAVE SESSION (IMPORTANT FOR VERCEL)
     req.session.save(err => {
       if (err) {
-        console.error("Session save error:", err);
         return res.status(500).json({ message: "Session save failed" });
       }
-
       res.json({ message: "Login successful" });
     });
 
@@ -80,6 +90,7 @@ exports.login = async (req, res) => {
     res.status(500).json({ message: "Server error" });
   }
 };
+
 exports.getProfile = async (req, res) => {
   try {
     // Check session

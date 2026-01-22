@@ -516,3 +516,13 @@ body::before {
   92% { animation-timing-function: ease-in; stroke-dashoffset: -157; }
   57%, 71%, 85%, 99%, to { animation-timing-function: ease-out; stroke-dashoffset: -163; }
 }
+.error-text {
+  color: red;
+  font-size: 12px;
+  margin-top: 4px;
+  display: block;
+}
+
+.input-error {
+  border: 1px solid red !important;
+}
