@@ -83,18 +83,26 @@
             </div>
           </li>
           <li class="nav-item nav-category">
-            <span class="nav-link">Navigation</span>
+            <span class="nav-link">Theme Settings</span>
           </li>
           <li class="nav-item menu-items">
-            <a class="nav-link" href="index.html">
+             <a class="nav-link" data-toggle="collapse" href="#font" aria-expanded="false" aria-controls="font">
               <span class="menu-icon">
                 <i class="mdi mdi-file-word"></i>
               </span>
               <span class="menu-title">FontFamily</span>
+              <i class="menu-arrow"></i>
             </a>
+            <div class="collapse" id="font">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item"> <a class="nav-link" href="pages/ui-features/buttons.html">Arial</a></li>
+                <li class="nav-item"> <a class="nav-link" href="pages/ui-features/dropdowns.html">Comic Sans</a></li>
+                <li class="nav-item"> <a class="nav-link" href="pages/ui-features/typography.html">Time New Roman</a></li>
+              </ul>
+            </div>
           </li>
           <li class="nav-item menu-items">
-            <a class="nav-link" data-toggle="collapse" href="#" aria-expanded="false" aria-controls="ui-basic">
+            <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
               <span class="menu-icon">
                 <i class="mdi mdi-meteor"></i>
               </span>
@@ -109,14 +117,14 @@
               </ul>
             </div>
           </li>
-          <li class="nav-item menu-items">
+          <!-- <li class="nav-item menu-items">
             <a class="nav-link" href="pages/forms/basic_elements.html">
               <span class="menu-icon">
                 <i class="mdi mdi-playlist-play"></i>
               </span>
               <span class="menu-title">Form Elements</span>
             </a>
-          </li>
+          </li> -->
           <li class="nav-item menu-items">
             <a class="nav-link" href="pages/tables/basic-table.html">
               <span class="menu-icon">
@@ -407,166 +415,11 @@
               </div>
             </div>
              <div class="row ghl-dashboard-row">
-    <!-- Sidebar (Left Navigation) -->
-    <div class="col-md-3 col-lg-2 ghl-sidebar">
-      <div class="sidebar-wrapper">
-        <div class="sidebar-header">
-          <img src="https://via.placeholder.com/50x50?text=GHL" alt="GHL Logo" class="logo">
-          <h5>Subaccount Dashboard</h5>
-        </div>
-        <nav class="sidebar-nav">
-          <ul class="nav flex-column">
-            <li class="nav-item">
-              <a class="nav-link active" href="#"><i class="mdi mdi-view-dashboard"></i> Dashboard</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#"><i class="mdi mdi-account-multiple"></i> Contacts</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#"><i class="mdi mdi-email"></i> Campaigns</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#"><i class="mdi mdi-calendar"></i> Calendar</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#"><i class="mdi mdi-chart-line"></i> Reports</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#"><i class="mdi mdi-cog"></i> Settings</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#"><i class="mdi mdi-account-group"></i> Subaccounts</a>
-            </li>
-          </ul>
-        </nav>
-      </div>
-    </div>
-
-    <!-- Main Content Area -->
-    <div class="col-md-9 col-lg-10 ghl-main-content">
-      <!-- Header -->
-      <div class="ghl-header">
-        <div class="d-flex justify-content-between align-items-center">
-          <div>
-            <h4>Welcome to Your Subaccount Dashboard</h4>
-            <p class="text-muted">Manage your subaccounts, view stats, and more.</p>
+            <iframe
+              src="dashboard.html"
+              style="width:100%; height:100vh; border:none;"
+            ></iframe>
           </div>
-          <div class="header-actions">
-            <button class="btn btn-primary"><i class="mdi mdi-plus"></i> Add Subaccount</button>
-            <div class="dropdown">
-              <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown">
-                <i class="mdi mdi-bell"></i> Notifications
-              </button>
-              <div class="dropdown-menu">
-                <a class="dropdown-item" href="#">New contact added</a>
-                <a class="dropdown-item" href="#">Campaign sent</a>
-              </div>
-            </div>
-            <div class="user-profile">
-              <img src="https://via.placeholder.com/40x40?text=User" alt="User" class="rounded-circle">
-              <span>Agency Owner</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Dashboard Content -->
-      <div class="ghl-dashboard">
-        <!-- Stats Row -->
-        <div class="row mb-4">
-          <div class="col-md-3">
-            <div class="card stat-card">
-              <div class="card-body">
-                <h5>Total Subaccounts</h5>
-                <h2>12</h2>
-                <p class="text-success">+2 this month</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-3">
-            <div class="card stat-card">
-              <div class="card-body">
-                <h5>Active Contacts</h5>
-                <h2>1,245</h2>
-                <p class="text-success">+15% growth</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-3">
-            <div class="card stat-card">
-              <div class="card-body">
-                <h5>Revenue</h5>
-                <h2>$5,678</h2>
-                <p class="text-success">+8% this week</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-3">
-            <div class="card stat-card">
-              <div class="card-body">
-                <h5>Campaigns Sent</h5>
-                <h2>89</h2>
-                <p class="text-muted">Last 30 days</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Recent Activities and Subaccount List -->
-        <div class="row">
-          <div class="col-md-6">
-            <div class="card">
-              <div class="card-header">
-                <h5>Recent Activities</h5>
-              </div>
-              <div class="card-body">
-                <ul class="list-group list-group-flush">
-                  <li class="list-group-item">New subaccount "Client ABC" created</li>
-                  <li class="list-group-item">Campaign "Welcome Email" sent to 500 contacts</li>
-                  <li class="list-group-item">Invoice generated for $1,200</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-6">
-            <div class="card">
-              <div class="card-header">
-                <h5>Subaccounts Overview</h5>
-              </div>
-              <div class="card-body">
-                <table class="table table-striped">
-                  <thead>
-                    <tr>
-                      <th>Name</th>
-                      <th>Contacts</th>
-                      <th>Status</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>Client ABC</td>
-                      <td>150</td>
-                      <td><span class="badge badge-success">Active</span></td>
-                    </tr>
-                    <tr>
-                      <td>Client XYZ</td>
-                      <td>200</td>
-                      <td><span class="badge badge-warning">Pending</span></td>
-                    </tr>
-                    <tr>
-                      <td>Client 123</td>
-                      <td>75</td>
-                      <td><span class="badge badge-success">Active</span></td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
           </div>
           <!-- content-wrapper ends -->
           <!-- partial:partials/_footer.html -->

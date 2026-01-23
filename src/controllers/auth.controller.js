@@ -46,8 +46,6 @@ exports.signup = async (req, res) => {
     res.status(500).json({ message: "Server error" });
   }
 };
-
-
 // LOGIN
 exports.login = async (req, res) => {
   try {

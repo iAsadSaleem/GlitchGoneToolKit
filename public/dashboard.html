@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>GHL Style Subaccount Dashboard</title>
+
+<!-- Bootstrap & Icons -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font/css/materialdesignicons.min.css">
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<style>
+:root {
+  --bg: #f6f7fb;
+  --card: #ffffff;
+  --border: #e5e7eb;
+  --primary: #2563eb;
+  --text-muted: #6b7280;
+}
+
+/* Layout */
+body {
+  background: var(--bg);
+  font-family: Inter, sans-serif;
+}
+
+.sidebar {
+  width: 260px;
+  background: #111827;
+  min-height: 100vh;
+  position: fixed;
+  color: #fff;
+}
+
+.sidebar a {
+  color: #9ca3af;
+  display: block;
+  padding: 12px 20px;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.sidebar a:hover,
+.sidebar a.active {
+  background: #1f2937;
+  color: #fff;
+}
+
+.sidebar h6 {
+  padding: 15px 20px;
+  font-size: 12px;
+  color: #6b7280;
+  text-transform: uppercase;
+}
+
+/* Header */
+.header {
+  margin-left: 260px;
+  background: #fff;
+  padding: 14px 24px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Main */
+.main {
+  margin-left: 260px;
+  padding: 24px;
+}
+
+/* Cards */
+.card-ghl {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+}
+
+.stat {
+  font-size: 26px;
+  font-weight: 700;
+}
+
+.muted {
+  color: var(--text-muted);
+  font-size: 13px;
+}
+
+.badge-soft {
+  background: #e6f9f0;
+  color: #0f766e;
+  font-size: 12px;
+  padding: 4px 8px;
+  border-radius: 6px;
+}
+
+canvas {
+  max-height: 220px;
+}
+
+/* Responsive */
+@media (max-width: 991px) {
+  .sidebar {
+    position: relative;
+    width: 100%;
+    min-height: auto;
+  }
+  .header, .main {
+    margin-left: 0;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- SIDEBAR -->
+<div class="sidebar">
+  <h6>Account</h6>
+  <a class="active"><i class="mdi mdi-view-dashboard"></i> Dashboard</a>
+  <a><i class="mdi mdi-forum"></i> Conversations</a>
+  <a><i class="mdi mdi-account-multiple"></i> Contacts</a>
+  <a><i class="mdi mdi-cash"></i> Opportunities</a>
+  <a><i class="mdi mdi-credit-card"></i> Payments</a>
+
+  <h6>Marketing</h6>
+  <a><i class="mdi mdi-bullhorn"></i> Campaigns</a>
+  <a><i class="mdi mdi-robot"></i> Automation</a>
+  <a><i class="mdi mdi-web"></i> Sites</a>
+
+  <h6>Settings</h6>
+  <a><i class="mdi mdi-cog"></i> Settings</a>
+</div>
+
+<!-- HEADER -->
+<div class="header">
+  <div>
+    <strong>Testing Account</strong><br>
+    <small class="text-muted">Subaccount Dashboard</small>
+  </div>
+  <div>
+    <i class="mdi mdi-bell-outline mr-3"></i>
+    <i class="mdi mdi-help-circle-outline mr-3"></i>
+    <span class="badge badge-primary rounded-circle p-2">MH</span>
+  </div>
+</div>
+
+<!-- MAIN CONTENT -->
+<div class="main">
+
+  <!-- Filters -->
+  <div class="card-ghl p-3 mb-4 d-flex justify-content-between align-items-center">
+    <h5 class="mb-0">Dashboard</h5>
+    <div class="d-flex">
+      <select class="form-control form-control-sm mr-2">
+        <option>All Pipelines</option>
+        <option>Marketing Pipeline</option>
+      </select>
+      <input type="date" class="form-control form-control-sm">
+    </div>
+  </div>
+
+  <!-- Stats -->
+  <div class="row">
+    <div class="col-xl-4 col-md-6 mb-3">
+      <div class="card-ghl p-3">
+        <div class="muted">Opportunity Status</div>
+        <div class="stat">Rs 0</div>
+        <span class="badge-soft">+0% vs last 30 days</span>
+      </div>
+    </div>
+
+    <div class="col-xl-4 col-md-6 mb-3">
+      <div class="card-ghl p-3">
+        <div class="muted">Opportunity Value</div>
+        <div class="stat">Rs 0</div>
+        <span class="badge-soft">+0% vs last 30 days</span>
+      </div>
+    </div>
+
+    <div class="col-xl-4 col-md-12 mb-3">
+      <div class="card-ghl p-3 text-center">
+        <div class="muted mb-2">Conversion</div>
+        <canvas id="conversion"></canvas>
+        <strong>0%</strong>
+      </div>
+    </div>
+  </div>
+
+  <!-- Charts -->
+  <div class="row">
+    <div class="col-lg-6 mb-3">
+      <div class="card-ghl p-3">
+        <h6>Funnel</h6>
+        <canvas id="funnel"></canvas>
+      </div>
+    </div>
+
+    <div class="col-lg-6 mb-3">
+      <div class="card-ghl p-3">
+        <h6>Stage Distribution</h6>
+        <canvas id="stage"></canvas>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+new Chart(document.getElementById('conversion'), {
+  type: 'doughnut',
+  data: { datasets: [{ data: [0,100], backgroundColor: ['#2563eb','#e5e7eb'], borderWidth: 0 }] },
+  options: { cutout: '80%', plugins: { legend: { display:false } } }
+});
+
+new Chart(document.getElementById('funnel'), {
+  type: 'bar',
+  data: { labels: ['New','Contacted','Qualified','Won'], datasets: [{ data: [0,0,0,0], backgroundColor:'#2563eb' }] },
+  options: { plugins:{ legend:{display:false} } }
+});
+
+new Chart(document.getElementById('stage'), {
+  type: 'bar',
+  data: { labels: ['Cold','Warm','Hot'], datasets: [{ data: [0,0,0], backgroundColor:'#93c5fd' }] },
+  options: { plugins:{ legend:{display:false} } }
+});
+</script>
+
+</body>
+</html>

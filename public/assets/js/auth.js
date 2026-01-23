@@ -136,7 +136,7 @@ if (loginBtn) {
 
     const emailError = document.getElementById("emailError");
     const passwordError = document.getElementById("passwordError");
-
+    console.log('Hello i am here',emailInput);
     // Reset errors
     emailError.innerText = "";
     passwordError.innerText = "";
@@ -203,7 +203,6 @@ if (loginBtn) {
     }
   });
 }
-
   // ================= LOGOUT =================
  // ================= LOGOUT =================
 document.addEventListener("click", async (e) => {
@@ -238,8 +237,6 @@ document.addEventListener("click", async (e) => {
     console.error("Logout failed", err);
   }
 });
-
-
 });
 
 document.addEventListener("DOMContentLoaded", async () => {
