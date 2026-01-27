@@ -136,7 +136,6 @@ if (loginBtn) {
 
     const emailError = document.getElementById("emailError");
     const passwordError = document.getElementById("passwordError");
-    console.log('Hello i am here',emailInput);
     // Reset errors
     emailError.innerText = "";
     passwordError.innerText = "";

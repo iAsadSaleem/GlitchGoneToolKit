@@ -230,7 +230,7 @@ button{
 }
 
 .img-text p{
-  font-size: 22px;
+  font-size: 21px;
   line-height: 1.5;
 }
 
@@ -526,3 +526,21 @@ body::before {
 .input-error {
   border: 1px solid red !important;
 }
+
+.loginpage-logo{
+  border-radius: 80px;
+  background-color: transparent !important;
+    height: 99px;
+    width: 100px;
+    box-shadow: 0px 4px 41px 11px #64dd17;
+
+}
+
+.rotate-diagonal-1{-webkit-animation:rotate-diagonal-1 .8s linear both;animation:rotate-diagonal-1 .8s linear both}
+@-webkit-keyframes rotate-diagonal-1{0%{-webkit-transform:rotate3d(1,1,0,0deg);transform:rotate3d(1,1,0,0deg)}50%{-webkit-transform:rotate3d(1,1,0,-180deg);transform:rotate3d(1,1,0,-180deg)}100%{-webkit-transform:rotate3d(1,1,0,-360deg);transform:rotate3d(1,1,0,-360deg)}}@keyframes rotate-diagonal-1{0%{-webkit-transform:rotate3d(1,1,0,0deg);transform:rotate3d(1,1,0,0deg)}50%{-webkit-transform:rotate3d(1,1,0,-180deg);transform:rotate3d(1,1,0,-180deg)}100%{-webkit-transform:rotate3d(1,1,0,-360deg);transform:rotate3d(1,1,0,-360deg)}}
+
+.slide-tl{-webkit-animation:slide-tl .5s cubic-bezier(.25,.46,.45,.94) both;animation:slide-tl .5s cubic-bezier(.25,.46,.45,.94) both}
+@-webkit-keyframes slide-tl{0%{-webkit-transform:translateY(0) translateX(0);transform:translateY(0) translateX(0)}100%{-webkit-transform:translateY(-100px) translateX(-100px);transform:translateY(-100px) translateX(-100px)}}@keyframes slide-tl{0%{-webkit-transform:translateY(0) translateX(0);transform:translateY(0) translateX(0)}100%{-webkit-transform:translateY(-100px) translateX(-100px);transform:translateY(-100px) translateX(-100px)}}
+.rotate-center{-webkit-animation:rotate-center .6s ease-in-out both;animation:rotate-center .6s ease-in-out both}
+@-webkit-keyframes rotate-center{0%{-webkit-transform:rotate(0);transform:rotate(0)}100%{-webkit-transform:rotate(360deg);transform:rotate(360deg)}}@keyframes rotate-center{0%{-webkit-transform:rotate(0);transform:rotate(0)}100%{-webkit-transform:rotate(360deg);transform:rotate(360deg)}}
+

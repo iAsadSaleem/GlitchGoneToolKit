@@ -39,7 +39,6 @@ exports.signup = async (req, res) => {
       password: hashedPassword
     });
 
-    console.log("User created:", user);
     res.json({ message: "Signup successful" });
   } catch (error) {
     console.error("Signup error:", error);

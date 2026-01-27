@@ -20889,7 +20889,7 @@ div.tagsinput {
     .sidebar .nav.sub-menu {
       margin-bottom: 0;
       margin-top: 0;
-      padding: 0 0 0 3.25rem;
+      padding: 0 0 0 0.6rem;
       list-style: none; }
       .sidebar .nav.sub-menu .nav-item {
         padding: 0; }
@@ -21241,5 +21241,75 @@ div.tagsinput {
   .theme-preview {
     margin-top: 20px;
   }
+}
+
+
+/* New Code here*/
+
+.theme-color-item {
+  padding: 8px 12px;
+}
+
+/* Main row */
+.theme-inline-control {
+  display: grid;
+  grid-template-columns: auto 80px 28px;
+  align-items: center;
+  gap: 20px;
+  background: #1f1f21;
+  border: 1px solid #2a2d36;
+  border-radius: 10px;
+  
+  height:   45px;
+  padding: 4px 8px;
+}
+
+/* Title */
+.theme-inline-title {
+  
+  font-size: 12px;
+  font-weight: 600;
+  color: #4e73df;
+  white-space: nowrap;
+}
+
+/* Input */
+.theme-inline-input {
+  flex: 0 1 80px;   /* 👈 grow=0, shrink=1, base=80px */
+  text-align: center;
+  background: #111318;
+  border: 1px solid #2a2d36;
+  border-radius: 10px;
+  height: 35px;
+  color: #e5e7eb;
+  font-size: 13px;
+}
+
+/* Color picker container — FIX */
+.theme-inline-color {
+  width: 30px;
+  height: 30px;
+  display: flex;              /* 🔥 REQUIRED */
+  align-items: center;        /* 🔥 REQUIRED */
+  justify-content: center;    /* 🔥 REQUIRED */
+  cursor: pointer;
+  position: relative;
+}
+
+/* Hide native picker but keep it clickable */
+.theme-inline-color input[type="color"] {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+/* Visible color square — FIX */
+.color-preview {
+  width: 30px;                /* 🔥 REQUIRED */
+  height: 30px;               /* 🔥 REQUIRED */
+  border-radius: 6px;
+  background: #4e73df;
+  border: 1px solid rgba(255, 255, 255, 0.25);
 }
 
