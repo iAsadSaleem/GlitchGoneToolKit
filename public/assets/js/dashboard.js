@@ -253,7 +253,7 @@
 function syncRange(rangeId, inputId) {
   const range = document.getElementById(rangeId);
   const input = document.getElementById(inputId);
-if(rangeId || inputId ){
+if(range || input ){
 
   range.addEventListener("input", () => {
     input.value = range.value;
