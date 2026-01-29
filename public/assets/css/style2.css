@@ -21263,6 +21263,83 @@ div.tagsinput {
   height:   45px;
   padding: 4px 8px;
 }
+.theme-inline-control-logo{
+  /* display: grid; */
+  grid-template-columns: auto 80px 28px;
+  align-items: center;
+  gap: 0px;
+  background: #1f1f21;
+  border: 1px solid #2a2d36;
+  border-radius: 10px;
+  
+  height:   45px;
+  padding: 4px 8px;
+}
+.theme-inline-control-logo-heightwidth{
+  /* display: grid; */
+  grid-template-columns: auto 80px 28px;
+  align-items: center;
+  gap: 0px;
+  background: #1f1f21;
+  border: 1px solid #2a2d36;
+  border-radius: 10px;
+  
+  height:   74px;
+  padding: 4px 8px;
+}
+.range-slider{
+  width: 200px;
+}
+.range-slider {
+  --fill-color: #3f3f3f;
+  --bg-color: #e5e7eb;
+  --percent: 50%;
+
+  width: 200px;
+  height: 6px;
+  border-radius: 5px;
+  appearance: none;
+  background: linear-gradient(
+    to right,
+    var(--fill-color) 0%,
+    var(--fill-color) var(--percent),
+    var(--bg-color) var(--percent),
+    var(--bg-color) 100%
+  );
+  outline: none;
+}
+.fontfamilies-dd{
+position: relative;
+    left: 20px !important;
+    /* width: 152px; */
+    flex: 0 1 120px;
+    text-align: center;
+    background: #111318;
+    border: 1px solid #2a2d36;
+    border-radius: 10px;
+    height: 35px;
+    color: #e5e7eb;
+    font-size: 13px;
+    margin: 0px -8px 0px -19px;
+}
+/* Thumb */
+.range-slider::-webkit-slider-thumb {
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  background: var(--fill-color);
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.range-slider::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  background: var(--fill-color);
+  border-radius: 50%;
+  cursor: pointer;
+}
+
 
 /* Title */
 .theme-inline-title {
@@ -21283,6 +21360,31 @@ div.tagsinput {
   height: 35px;
   color: #e5e7eb;
   font-size: 13px;
+}
+.theme-inline-control-logo input[type="range"] {
+  width: 100%;
+  margin-top: 6px;
+}
+
+.px{
+    color: #838383;
+    font-size: 14px;
+    position: relative;
+    z-index: 9 !important;
+}
+.theme-inline-input-logo{
+      position: relative;
+    left: 20px !important;
+    width: 152px;
+    flex: 0 1 120px;
+    text-align: center;
+    background: #111318;
+    border: 1px solid #2a2d36;
+    border-radius: 10px;
+    height: 35px;
+    color: #e5e7eb;
+    font-size: 13px;
+    margin: 0px -8px 0px -12px;
 }
 
 /* Color picker container — FIX */

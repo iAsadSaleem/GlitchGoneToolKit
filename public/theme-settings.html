@@ -14,6 +14,8 @@
     <link rel="stylesheet" href="./assets/vendors/flag-icon-css/css/flag-icon.min.css">
     <link rel="stylesheet" href="./assets/vendors/owl-carousel-2/owl.carousel.min.css">
     <link rel="stylesheet" href="./assets/vendors/owl-carousel-2/owl.theme.default.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/themes/classic.min.css"/>
+
     <!-- End plugin css for this page -->
     <!-- inject:css -->
     <!-- endinject -->
@@ -94,11 +96,17 @@
               <i class="menu-arrow"></i>
             </a>
             <div class="collapse" id="font">
-              <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="pages/ui-features/buttons.html">Arial</a></li>
-                <li class="nav-item"> <a class="nav-link" href="pages/ui-features/dropdowns.html">Comic Sans</a></li>
-                <li class="nav-item"> <a class="nav-link" href="pages/ui-features/typography.html">Time New Roman</a></li>
-              </ul>
+              <div class="theme-inline-control-logo">
+                    <span class="theme-inline-title">FontFamilies</span>
+                <select id="fontSelect" class="fontfamilies-dd">
+                  <option value="Arial" style="font-family:Arial">Arial</option>
+                  <option value="Verdana" style="font-family:Verdana">Verdana</option>
+                  <option value="Georgia" style="font-family:Georgia">Georgia</option>
+                  <option value="Courier New" style="font-family:'Courier New'">Courier New</option>
+                  <option value="Times New Roman" style="font-family:'Times New Roman'">Times New Roman</option>
+                  <option value="Roboto" style="font-family:Roboto">Roboto</option>
+                </select>
+              </div>
             </div>
           </li>
           <li class="nav-item menu-items">
@@ -112,101 +120,29 @@
             <div class="collapse" id="ui-basic">
               <ul class="nav flex-column sub-menu">
                 <li class="nav-item theme-color-item">
-                  <div class="theme-inline-control">
-                    <span class="theme-inline-title">Primary</span>
-
-                    <input
-                      type="text"
-                      class="theme-inline-input"
-                      value="#4e73df"
-                    />
-
-                    <label class="theme-inline-color">
-                      <input type="color" value="#4e73df" />
-                      <span class="color-preview"></span>
-                    </label>
+                  <div class="theme-inline-control-logo">
+                    <span class="theme-inline-title">Url</span>
+                    <input type="text" id="logo-url" class="theme-inline-input-logo" value="" placeholder="Logo URL"/>
                   </div>
                 </li>
                 <li class="nav-item theme-color-item">
-                  <div class="theme-inline-control">
-                    <span class="theme-inline-title">Secondary</span>
-
-                    <input
-                      type="text"
-                      class="theme-inline-input"
-                      value="#4e73df"
-                    />
-
-                    <label class="theme-inline-color">
-                      <input type="color" value="#4e73df" />
-                      <span class="color-preview"></span>
-                    </label>
+                  <div class="theme-inline-control-logo-heightwidth">
+                    <span class="theme-inline-title">Height</span>
+                    <input type="text" id="heightInput" class="theme-inline-input-logo" value="100"/>
+                    <label class="px">px</label>
+                    <input type="range" class="range-slider" id="heightRange" min="0" max="500" value="100">
                   </div>
                 </li>
+
                 <li class="nav-item theme-color-item">
-                  <div class="theme-inline-control">
-                    <span class="theme-inline-title">Primary</span>
-
-                    <input
-                      type="text"
-                      class="theme-inline-input"
-                      value="#4e73df"
-                    />
-
-                    <label class="theme-inline-color">
-                      <input type="color" value="#4e73df" />
-                      <span class="color-preview"></span>
-                    </label>
+                  <div class="theme-inline-control-logo-heightwidth">
+                    <span class="theme-inline-title">Width</span>
+                    <input type="text" id="widthInput" class="theme-inline-input-logo" value="100"/>
+                    <label class="px">px</label>
+                    <input type="range" class="range-slider"  id="widthRange" min="0" max="500" value="100">
                   </div>
                 </li>
-                <li class="nav-item theme-color-item">
-                  <div class="theme-inline-control">
-                    <span class="theme-inline-title">Accent</span>
 
-                    <input
-                      type="text"
-                      class="theme-inline-input"
-                      value="#4e73df"
-                    />
-
-                    <label class="theme-inline-color">
-                      <input type="color" value="#4e73df" />
-                      <span class="color-preview"></span>
-                    </label>
-                  </div>
-                </li>
-                <li class="nav-item theme-color-item">
-                  <div class="theme-inline-control">
-                    <span class="theme-inline-title">Dark</span>
-
-                    <input
-                      type="text"
-                      class="theme-inline-input"
-                      value="#4e73df"
-                    />
-
-                    <label class="theme-inline-color">
-                      <input type="color" value="#4e73df" />
-                      <span class="color-preview"></span>
-                    </label>
-                  </div>
-                </li>
-                 <li class="nav-item theme-color-item">
-                  <div class="theme-inline-control">
-                    <span class="theme-inline-title">App Bg</span>
-
-                    <input
-                      type="text"
-                      class="theme-inline-input"
-                      value="#4e73df"
-                    />
-
-                    <label class="theme-inline-color">
-                      <input type="color" value="#4e73df" />
-                      <span class="color-preview"></span>
-                    </label>
-                  </div>
-                </li>
               </ul>
             </div>
           </li>
@@ -352,16 +288,100 @@
               <span class="menu-title">Sidebar</span>
               <i class="menu-arrow"></i>
             </a>
-            <div class="collapse" id="auth">
-              <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="pages/samples/blank-page.html"> Blank Page </a></li>
-                <li class="nav-item"> <a class="nav-link" href="pages/samples/error-404.html"> 404 </a></li>
-                <li class="nav-item"> <a class="nav-link" href="pages/samples/error-500.html"> 500 </a></li>
-                <li class="nav-item"> <a class="nav-link" href="pages/samples/login.html"> Login </a></li>
-                <li class="nav-item"> <a class="nav-link" href="pages/samples/register.html"> Register </a></li>
+          </li>
+           <div class="collapse" id="auth">
+               <ul class="nav flex-column sub-menu">
+                <li class="nav-item theme-color-item">
+                  <div class="theme-inline-control">
+                    <span class="theme-inline-title">Primary</span>
+
+                    <input
+                      type="text"
+                      class="theme-inline-input"
+                      value="#4e73df"
+                    />
+
+                    <label class="theme-inline-color">
+                      <input type="color" value="#4e73df" />
+                      <span class="color-preview"></span>
+                    </label>
+                  </div>
+                </li>
+                <li class="nav-item theme-color-item">
+                  <div class="theme-inline-control">
+                    <span class="theme-inline-title">Secondary</span>
+
+                    <input
+                      type="text"
+                      class="theme-inline-input"
+                      value="#4e73df"
+                    />
+
+                    <label class="theme-inline-color">
+                      <input type="color" value="#4e73df" />
+                      <span class="color-preview"></span>
+                    </label>
+                  </div>
+                </li>
+                <li class="nav-item theme-color-item">
+                  <div class="theme-inline-control">
+                    <span class="theme-inline-title">Primary</span>
+
+                    <input
+                      type="text"
+                      class="theme-inline-input"
+                      value="#4e73df"
+                    />
+
+                    <label class="theme-inline-color">
+                      <input type="color" value="#4e73df" />
+                      <span class="color-preview"></span>
+                    </label>
+                  </div>
+                </li>
+                <li class="nav-item theme-color-item">
+                  <div class="theme-inline-control">
+                    <span class="theme-inline-title">Accent</span>
+
+                    <input
+                      type="text"
+                      class="theme-inline-input"
+                      value="#4e73df"
+                    />
+
+                    <label class="theme-inline-color">
+                      <input type="color" value="#4e73df" />
+                      <span class="color-preview"></span>
+                    </label>
+                  </div>
+                </li>
+                <li class="nav-item theme-color-item">
+                  <div class="theme-inline-control">
+                    <span class="theme-inline-title">Dark</span>
+
+                    <input
+                      type="text"
+                      class="theme-inline-input"
+                      value="#4e73df"
+                    />
+
+                    <label class="theme-inline-color">
+                      <input type="color" value="#4e73df" />
+                      <span class="color-preview"></span>
+                    </label>
+                  </div>
+                </li>
+               <li class="nav-item theme-color-item">
+                  <div class="theme-inline-control">
+                    <span class="theme-inline-title">App Bg</span>
+
+                    <input type="text" class="theme-inline-input" value="#4e73df"/>
+
+                    <div class="color-preview" id="appBgPicker"></div>
+                  </div>
+                </li>
               </ul>
             </div>
-          </li>
           <li class="nav-item menu-items">
             <a class="nav-link" href="http://www.bootstrapdash.com/demo/corona-free/jquery/documentation/documentation.html">
               <span class="menu-icon">
@@ -631,26 +651,41 @@
     </div>
     <!-- container-scroller -->
     <!-- plugins:js -->
+    <script src="https://cdn.jsdelivr.net/npm/@simonwep/pickr"></script>
         <script>
-          const container = document.querySelector(".theme-inline-control");
-          const textInput = container.querySelector(".theme-inline-input");
-          const colorInput = container.querySelector("input[type='color']");
-          const preview = container.querySelector(".color-preview");
+          const textInput = document.querySelector(".theme-inline-input");
 
-          // Picker → Input
-          colorInput.addEventListener("input", () => {
-            textInput.value = colorInput.value;
-            preview.style.background = colorInput.value;
-          });
+const pickr = Pickr.create({
+  el: '#appBgPicker',
+  theme: 'classic',
+  default: textInput.value,
 
-          // Input → Picker
-          textInput.addEventListener("input", () => {
-            const val = textInput.value.trim();
-            if (/^#([0-9A-F]{3}){1,2}$/i.test(val)) {
-              colorInput.value = val;
-              preview.style.background = val;
-            }
-          });
+  components: {
+    preview: true,
+    opacity: true,
+    hue: true,
+
+    interaction: {
+      hex: true,
+      rgba: true,
+      input: true,
+      save: true
+    }
+  }
+});
+
+// Picker → Input
+pickr.on('change', (color) => {
+  const hex = color.toHEXA().toString();
+  textInput.value = hex;
+  document.querySelector('#appBgPicker').style.background = hex;
+});
+
+// Input → Picker
+textInput.addEventListener("input", () => {
+  pickr.setColor(textInput.value);
+});
+
         </script>
 
 

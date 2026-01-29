@@ -31,7 +31,6 @@ app.use(session({
   }
 }));
 
-
 // ---------- AUTH GUARD ----------
 const isAuthenticated = (req, res, next) => {
   if (!req.session.userId) {
