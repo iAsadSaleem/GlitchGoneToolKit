@@ -253,20 +253,23 @@
 function syncRange(rangeId, inputId) {
   const range = document.getElementById(rangeId);
   const input = document.getElementById(inputId);
+if(rangeId || inputId ){
 
-  // When slider moves → update input
   range.addEventListener("input", () => {
     input.value = range.value;
   });
-
+  
   // When input changes → update slider
   input.addEventListener("input", () => {
     range.value = input.value || 0;
   });
 }
+  // When slider moves → update input
+}
 
 syncRange("heightRange", "heightInput");
 syncRange("widthRange", "widthInput");
+
 document.querySelectorAll('.range-slider').forEach(slider => {
   const update = () => {
     const percent = (slider.value - slider.min) / (slider.max - slider.min) * 100;
