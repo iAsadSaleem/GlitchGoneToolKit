@@ -81,7 +81,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
        if (res.ok) {
             setTimeout(() => {
-              window.location.href = "/login-signup.html";
+            window.location.replace("/login-signup.html");
             }, 500); // smooth transition
           } else {
             Loader.hide();

@@ -30,7 +30,12 @@ app.use(session({
     maxAge: 1000 * 60 * 60 * 24 * 7
   }
 }));
-
+app.use((req, res, next) => {
+  res.setHeader("Cache-Control", "no-store, no-cache, must-revalidate, private");
+  res.setHeader("Pragma", "no-cache");
+  res.setHeader("Expires", "0");
+  next();
+});
 // ---------- AUTH GUARD ----------
 const isAuthenticated = (req, res, next) => {
   if (!req.session.userId) {
