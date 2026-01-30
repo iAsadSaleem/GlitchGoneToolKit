@@ -20626,7 +20626,7 @@ div.tagsinput {
   background: #191c24;
   font-weight: normal;
   padding: 0;
-  width: 244px;
+  width: 300px;
   z-index: 11;
   transition: width 0.25s ease, background 0.25s ease;
   -webkit-transition: width 0.25s ease, background 0.25s ease;
@@ -21256,7 +21256,7 @@ div.tagsinput {
   grid-template-columns: auto 80px 28px;
   align-items: center;
   gap: 20px;
-  background: #1f1f21;
+  background: #15151569;
   border: 1px solid #2a2d36;
   border-radius: 10px;
   
@@ -21268,7 +21268,7 @@ div.tagsinput {
   grid-template-columns: auto 80px 28px;
   align-items: center;
   gap: 0px;
-  background: #1f1f21;
+  background: #15151569;
   border: 1px solid #2a2d36;
   border-radius: 10px;
   
@@ -21280,7 +21280,7 @@ div.tagsinput {
   grid-template-columns: auto 80px 28px;
   align-items: center;
   gap: 0px;
-  background: #1f1f21;
+  background: #15151569;
   border: 1px solid #2a2d36;
   border-radius: 10px;
   
@@ -21415,3 +21415,8 @@ position: relative;
   border: 1px solid rgba(255, 255, 255, 0.25);
 }
 
+.header-button{
+  font-size: 14px;
+    padding: 8px 0px 0px 0px !important;
+    color: #8d8d8de0;
+}
