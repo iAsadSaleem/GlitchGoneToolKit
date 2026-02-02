@@ -31,6 +31,8 @@ body {
   min-height: 100vh;
   position: fixed;
   color: #fff;
+      border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
 }
 
 .sidebar a {
@@ -73,6 +75,7 @@ body {
 
 /* Cards */
 .card-ghl {
+  height: 100% !important;
   background: var(--card);
   border: 1px solid var(--border);
   border-radius: 12px;
@@ -96,9 +99,89 @@ body {
   padding: 4px 8px;
   border-radius: 6px;
 }
+.badge-hard {
+  background: #e6f9f0;
+  color: #fd3535;
+  font-size: 12px;
+  padding: 4px 8px;
+  border-radius: 6px;
+}
 .companylogo-dashboard{
-  height: 97px;
-  width: 97px;
+    left: 53px;
+    
+    height: 97px;
+    width: 97px;
+    position: relative;
+   }
+.sidebarselector {
+    border-radius: 8px;
+    height: 2.6rem;
+}
+.switcher{
+  font-size: 12px;
+    background: #1F2937 !important;
+    max-width: 200px !important;
+    margin: 0 auto !important;
+    margin-bottom: 20px !important;
+    width: 100% !important;
+}
+.hl_location-text {
+    top: -33px;
+    left: 33px;
+    position: relative;
+    margin-left: .15rem;
+}
+.locationselector{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.locationcountryregion{
+    --tw-text-opacity: 1;
+    color: rgb(255 255 255 / var(--tw-text-opacity));
+    max-width: 7.5rem;
+    margin-top: .2rem;
+    display: inline-block;
+}
+.mdi-phone-button{
+      border: 0px transparent;
+    background-color: #181B22;
+    border-radius: 24px;
+    height: 30px;
+    width: 30px;
+}
+.mdi-white-balance-auto-button,mdi-bell-outline-button,mdi-help-circle-outline-button{
+       border: 0px transparent;
+    background-color: #181B22;
+    border-radius: 24px;
+    height: 30px;
+    width: 30px;
+}
+.mdi-bell-outline-button{
+        border: 0px transparent;
+    background-color: #181B22;
+    border-radius: 24px;
+    height: 30px;
+    width: 30px;
+}
+.mdi-help-circle-outline-button{
+       border: 0px transparent;
+    background-color: #181B22;
+    border-radius: 24px;
+    height: 30px;
+    width: 30px;
+}
+.mdi-phone::before {
+    color: #ffffff !important;
+}
+.mdi-white-balance-auto::before {
+    color: #ffffff !important;
+}
+.mdi-bell-outline::before {
+    color: #ffffff !important;
+}
+.mdi-help-circle-outline::before {
+    color: #ffffff !important;
 }
 canvas {
   max-height: 220px;
@@ -123,6 +206,37 @@ canvas {
 <!-- SIDEBAR -->
 <div class="sidebar">
     <a href="index.html"><img class="companylogo-dashboard"  src="./assets/images/companylogo.png" alt="logo" /></a>
+    <div id="location-switcher-sidbar-v2" class="sidebarselector switcher flex flex-row items-center px-1 py-1 mb-3 text-sm text-white cursor-pointer md:justify-center lg:justify-between xl:justify-between md:mx-1 lg:mx-3 xl:mx-3">
+      <div class="flex flex-row items-center w-36">
+        <div class="flex items-center w-full text-xs leading-4">
+          <div>
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none" viewBox="0 0 32 32" class="hl_location_icon scale-2">
+              <rect width="32" height="32" fill="#fff" fill-opacity=".15" rx="16">
+
+              </rect>
+              <g clip-path="url(#a)">
+                <path stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.333" d="M11.333 17.524c-1.234.545-2 1.303-2 2.143 0 1.656 2.985 3 6.667 3s6.667-1.344 6.667-3c0-.84-.766-1.598-2-2.143M20 13.334c0 2.709-3 4-4 6-1-2-4-3.291-4-6a4 4 0 0 1 8 0m-3.333 0a.667.667 0 1 1-1.334 0 .667.667 0 0 1 1.334 0">
+
+                </path></g><defs><clipPath id="a">
+                  <path fill="#fff" d="M8 8h16v16H8z">
+
+                  </path></clipPath></defs>
+                
+                </svg>
+          </div>
+                <div class="hl_location-text">
+                  <span class="justify-center font-medium hl_text-overflow hl_switcher-loc-name locationselector">Test Subaccount ABC</span>
+                  <span class="justify-center hl_text-overflow hl_switcher-loc-city font-small locationcountryregion">Region, Region</span>
+                </div>
+              </div>
+            </div>
+            <div class="flex flex-col items-center justify-center w-5 h-5 rounded-full switcher-caret-holder">
+              <i class="fas fa-angle-up opacity-70 md:opacity-100 lg:opacity-70 xl:opacity-70">
+
+              </i>
+              <i class="fas fa-angle-down opacity-70 md:opacity-100 lg:opacity-70 xl:opacity-70"></i>
+            </div><!---->
+          </div>
   <h6>Account</h6>
   <a class="active"><i class="mdi mdi-view-dashboard"></i> Dashboard</a>
   <a><i class="mdi mdi-forum"></i> Conversations</a>
@@ -142,8 +256,10 @@ canvas {
     <small class="text-muted">Subaccount Dashboard</small>
   </div>
   <div>
-    <i class="mdi mdi-bell-outline mr-3"></i>
-    <i class="mdi mdi-help-circle-outline mr-3"></i>
+    <button class="mdi-phone-button"> <i class="mdi mdi-phone mr-3"></i></button>
+    <button class="mdi-white-balance-auto-button"><i class="mdi mdi-white-balance-auto mr-3"></i></button>
+    <button class="mdi-bell-outline-button"><i class="mdi mdi-bell-outline mr-3"></i></button>
+    <button class="mdi-help-circle-outline-button"><i class="mdi mdi-help-circle-outline mr-3"></i></button>
     <span class="badge badge-primary rounded-circle p-2">MH</span>
   </div>
 </div>
@@ -168,16 +284,16 @@ canvas {
     <div class="col-xl-4 col-md-6 mb-3">
       <div class="card-ghl p-3">
         <div class="muted">Opportunity Status</div>
-        <div class="stat">Rs 0</div>
-        <span class="badge-soft">+0% vs last 30 days</span>
+        <div class="stat">$5450</div>
+        <span class="badge-soft">+75% vs last 30 days</span>
       </div>
     </div>
 
     <div class="col-xl-4 col-md-6 mb-3">
       <div class="card-ghl p-3">
         <div class="muted">Opportunity Value</div>
-        <div class="stat">Rs 0</div>
-        <span class="badge-soft">+0% vs last 30 days</span>
+        <div class="stat">$275</div>
+        <span class="badge-hard">-10% vs last 30 days</span>
       </div>
     </div>
 
@@ -185,7 +301,7 @@ canvas {
       <div class="card-ghl p-3 text-center">
         <div class="muted mb-2">Conversion</div>
         <canvas id="conversion"></canvas>
-        <strong>0%</strong>
+        <strong>75%</strong>
       </div>
     </div>
   </div>
@@ -212,19 +328,19 @@ canvas {
 <script>
 new Chart(document.getElementById('conversion'), {
   type: 'doughnut',
-  data: { datasets: [{ data: [0,100], backgroundColor: ['#2563eb','#e5e7eb'], borderWidth: 0 }] },
+  data: { datasets: [{ data: [75,25], backgroundColor: ['#2563eb','#e5e7eb'], borderWidth: 0 }] },
   options: { cutout: '80%', plugins: { legend: { display:false } } }
 });
 
 new Chart(document.getElementById('funnel'), {
   type: 'bar',
-  data: { labels: ['New','Contacted','Qualified','Won'], datasets: [{ data: [0,0,0,0], backgroundColor:'#2563eb' }] },
+  data: { labels: ['New','Contacted','Qualified','Won'], datasets: [{ data: [35,20,44,75], backgroundColor:'#2563eb' }] },
   options: { plugins:{ legend:{display:false} } }
 });
 
 new Chart(document.getElementById('stage'), {
-  type: 'bar',
-  data: { labels: ['Cold','Warm','Hot'], datasets: [{ data: [0,0,0], backgroundColor:'#93c5fd' }] },
+  type: 'line',
+  data: { labels: ['Jan','Feb','Mar','Apr','May','Jun','July','Aug','Sep','Oct'], datasets: [{ data: [10,30,77,33,23,14,44,55,77,88], backgroundColor:'#93c5fd' }] },
   options: { plugins:{ legend:{display:false} } }
 });
 </script>
