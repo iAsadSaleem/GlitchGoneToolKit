@@ -21287,15 +21287,11 @@ div.tagsinput {
   height:   74px;
   padding: 4px 8px;
 }
-.range-slider{
-  width: 200px;
-}
 .range-slider {
   --fill-color: #3f3f3f;
   --bg-color: #e5e7eb;
   --percent: 50%;
-
-  width: 200px;
+  width: 100% !important;;
   height: 6px;
   border-radius: 5px;
   appearance: none;
