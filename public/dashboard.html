@@ -45,6 +45,7 @@ body {
 
 .sidebar a:hover,
 .sidebar a.active {
+  border-radius: 25px;
   background: #1f2937;
   color: #fff;
 }
@@ -205,7 +206,7 @@ canvas {
 
 <!-- SIDEBAR -->
 <div class="sidebar">
-    <a href="index.html"><img class="companylogo-dashboard"  src="./assets/images/companylogo.png" alt="logo" /></a>
+    <a href="#"><img class="companylogo-dashboard"  src="./assets/images/companylogo.png" alt="logo" /></a>
     <div id="location-switcher-sidbar-v2" class="sidebarselector switcher flex flex-row items-center px-1 py-1 mb-3 text-sm text-white cursor-pointer md:justify-center lg:justify-between xl:justify-between md:mx-1 lg:mx-3 xl:mx-3">
       <div class="flex flex-row items-center w-36">
         <div class="flex items-center w-full text-xs leading-4">
@@ -237,7 +238,7 @@ canvas {
               <i class="fas fa-angle-down opacity-70 md:opacity-100 lg:opacity-70 xl:opacity-70"></i>
             </div><!---->
           </div>
-  <h6>Account</h6>
+  <h6>Menu</h6>
   <a class="active"><i class="mdi mdi-view-dashboard"></i> Dashboard</a>
   <a><i class="mdi mdi-forum"></i> Conversations</a>
   <a><i class="mdi mdi-account-multiple"></i> Contacts</a>
@@ -343,6 +344,7 @@ new Chart(document.getElementById('stage'), {
   data: { labels: ['Jan','Feb','Mar','Apr','May','Jun','July','Aug','Sep','Oct'], datasets: [{ data: [10,30,77,33,23,14,44,55,77,88], backgroundColor:'#93c5fd' }] },
   options: { plugins:{ legend:{display:false} } }
 });
+
 </script>
 
 </body>
