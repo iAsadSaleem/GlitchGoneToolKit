@@ -8,7 +8,8 @@ exports.signup = async (req, res) => {
     let { name, email, password } = req.body;
 
     // Normalize email and name to lower case for checking
-
+    const emailLower = email.toLowerCase();
+    const nameLower = name.toLowerCase();
     // Check if email exists (case-insensitive)
     const existingEmail = await User.findOne({
       email: { $regex: `^${email}$`, $options: "i" } // i = case-insensitive
@@ -17,7 +18,6 @@ exports.signup = async (req, res) => {
     if (existingEmail) {
       return res.status(400).json({ message: "Email already exists" });
     }
-
     // Check if name exists (case-insensitive)
     const existingName = await User.findOne({
       name: { $regex: `^${name}$`, $options: "i" }
@@ -26,16 +26,13 @@ exports.signup = async (req, res) => {
     if (existingName) {
       return res.status(400).json({ message: "Name already taken" });
     }
-
     // Hash the password
     const hashedPassword = await bcrypt.hash(password, 10);
-    const emailLower = email.toLowerCase();
-    const nameLower = name.toLowerCase();
-
+    
     // Create the user
     const user = await User.create({
-      nameLower,
-      emailLower,
+      name,
+      email,
       password: hashedPassword
     });
 
