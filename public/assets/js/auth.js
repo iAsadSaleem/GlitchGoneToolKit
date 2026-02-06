@@ -77,7 +77,7 @@ document.addEventListener("DOMContentLoaded", () => {
       
 
       const data = await res.json();
-      alert(data.message);
+      // alert(data.message);
 
        if (res.ok) {
             setTimeout(() => {
@@ -88,7 +88,7 @@ document.addEventListener("DOMContentLoaded", () => {
             signupBtn.disabled = false;
           }
       } catch (err) {
-        alert("Something went wrong");
+        // alert("Something went wrong");
         Loader.hide();
         signupBtn.disabled = false;
       }
