@@ -8,8 +8,6 @@ exports.signup = async (req, res) => {
     let { name, email, password } = req.body;
 
     // Normalize email and name to lower case for checking
-    const emailLower = email.toLowerCase();
-    const nameLower = name.toLowerCase();
 
     // Check if email exists (case-insensitive)
     const existingEmail = await User.findOne({
@@ -31,11 +29,13 @@ exports.signup = async (req, res) => {
 
     // Hash the password
     const hashedPassword = await bcrypt.hash(password, 10);
+    const emailLower = email.toLowerCase();
+    const nameLower = name.toLowerCase();
 
     // Create the user
     const user = await User.create({
-      name,
-      email,
+      nameLower,
+      emailLower,
       password: hashedPassword
     });
 
