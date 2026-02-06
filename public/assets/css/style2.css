@@ -21256,7 +21256,7 @@ div.tagsinput {
   grid-template-columns: auto 80px 28px;
   align-items: center;
   gap: 20px;
-  background: #15151569;
+  background: #22242E;
   border: 1px solid #2a2d36;
   border-radius: 10px;
   
@@ -21268,8 +21268,8 @@ div.tagsinput {
   grid-template-columns: auto 80px 28px;
   align-items: center;
   gap: 0px;
-  background: #15151569;
-  border: 1px solid #2a2d36;
+  background: #22242E;
+  border: 1px solid #505259;
   border-radius: 10px;
   
   height:   45px;
@@ -21280,7 +21280,7 @@ div.tagsinput {
   grid-template-columns: auto 80px 28px;
   align-items: center;
   gap: 0px;
-  background: #15151569;
+  background: #22242E;
   border: 1px solid #2a2d36;
   border-radius: 10px;
   
@@ -21288,7 +21288,7 @@ div.tagsinput {
   padding: 4px 8px;
 }
 .range-slider {
-  --fill-color: #3f3f3f;
+  --fill-color: #939393;
   --bg-color: #e5e7eb;
   --percent: 50%;
   width: 100% !important;;
@@ -21310,8 +21310,8 @@ position: relative;
     /* width: 152px; */
     flex: 0 1 120px;
     text-align: center;
-    background: #111318;
-    border: 1px solid #2a2d36;
+    background: #22242E;
+    border: 1px solid #8c8c8c1f;
     border-radius: 10px;
     height: 35px;
     color: #e5e7eb;
@@ -21342,7 +21342,7 @@ position: relative;
   
   font-size: 12px;
   font-weight: 600;
-  color: #4e73df;
+  color: #a5acbf;
   white-space: nowrap;
 }
 
@@ -21350,8 +21350,8 @@ position: relative;
 .theme-inline-input {
   flex: 0 1 80px;   /* 👈 grow=0, shrink=1, base=80px */
   text-align: center;
-  background: #111318;
-  border: 1px solid #2a2d36;
+  background: #22242E;
+  border: 1px solid #353946;
   border-radius: 10px;
   height: 35px;
   color: #e5e7eb;
@@ -21374,13 +21374,30 @@ position: relative;
     width: 152px;
     flex: 0 1 120px;
     text-align: center;
-    background: #111318;
-    border: 1px solid #2a2d36;
+    background: #22242E;
+    border: 1px solid #505259;
     border-radius: 10px;
     height: 35px;
     color: #e5e7eb;
     font-size: 13px;
     margin: 0px -8px 0px -12px;
+}
+.theme-inline-input-logo-url{
+      position: relative;
+    left: 20px !important;
+    width: 216px;
+    flex: 0 1 120px;
+    text-align: center;
+    background: #22242E;
+    border: 1px solid #505259;
+    border-radius: 10px;
+    height: 35px;
+    color: #e5e7eb;
+    font-size: 13px;
+    margin: 0px -8px 0px -12px;
+}
+.theme-inline-input-logo-url::placeholder {
+    color: #ffffff; /* your color */
 }
 
 /* Color picker container — FIX */
@@ -21415,4 +21432,46 @@ position: relative;
   font-size: 14px;
     padding: 8px 0px 0px 0px !important;
     color: #8d8d8de0;
+}
+.hidden {
+  display: none !important;
+}
+
+.content-wrapper {
+  position: relative;
+}
+
+.blur-bg {
+  filter: blur(6px);
+  pointer-events: none;
+}
+
+/* Coming Soon Overlay */
+.coming-soon {
+     position: absolute;
+   top:0;
+   left:0;
+   width:100%;
+   height:100%;
+
+   display:flex;
+   justify-content:center;
+   align-items:center;
+
+   background: rgba(0,0,0,0.5);
+   backdrop-filter: blur(5px);
+
+   z-index:999;
+}
+
+.coming-soon h2 {
+  color:#fff;
+  font-size:32px;
+}
+
+.theme-inline-input-logo-url:focus,
+.theme-inline-input-logo:focus,
+.theme-inline-input:focus {
+    border-color: #505259;
+    outline: none
 }
