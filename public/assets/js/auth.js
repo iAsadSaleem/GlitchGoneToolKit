@@ -238,29 +238,60 @@ document.addEventListener("click", async (e) => {
 });
 });
 
+// document.addEventListener("DOMContentLoaded", async () => {
+//   try {
+//     const res = await fetch("/api/auth/getprofile", {
+//       method: "GET",
+//       credentials: "include"
+//     });
+
+//     if (!res.ok) return;
+
+//     const data = await res.json();
+//     const userName = data.user.name;
+
+//     // Delay to ensure navbar is loaded
+//     setTimeout(() => {
+//       const navbarNameEl = document.querySelector(".navbar-profile-name");
+//       if (navbarNameEl) navbarNameEl.textContent = userName;
+
+//       const profileNameEl = document.querySelector(".profile-name h5");
+//       if (profileNameEl) profileNameEl.textContent = userName;
+//     }, 100); // 100ms delay
+
+//   } catch (err) {
+//     console.error("Failed to load profile", err);
+//   }
+// });
+
+function updateUserName(userName) {
+  const navbarNameEl = document.querySelector(".navbar-profile-name");
+  if (navbarNameEl) navbarNameEl.textContent = userName;
+
+  const profileNameEl = document.querySelector(".profile-name h5");
+  if (profileNameEl) profileNameEl.textContent = userName;
+}
+
 document.addEventListener("DOMContentLoaded", async () => {
   try {
     const res = await fetch("/api/auth/getprofile", {
-      method: "GET",
       credentials: "include"
     });
 
     if (!res.ok) return;
 
     const data = await res.json();
-    const userName = data.user.name;
+    updateUserName(data.user.name);
 
-    // Delay to ensure navbar is loaded
-    setTimeout(() => {
-      const navbarNameEl = document.querySelector(".navbar-profile-name");
-      if (navbarNameEl) navbarNameEl.textContent = userName;
+    // Retry if navbar loads late
+    const observer = new MutationObserver(() => {
+      updateUserName(data.user.name);
+    });
 
-      const profileNameEl = document.querySelector(".profile-name h5");
-      if (profileNameEl) profileNameEl.textContent = userName;
-    }, 100); // 100ms delay
+    observer.observe(document.body, { childList: true, subtree: true });
 
   } catch (err) {
-    console.error("Failed to load profile", err);
+    console.error(err);
   }
 });
 
