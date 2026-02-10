@@ -43,9 +43,14 @@ const isAuthenticated = (req, res, next) => {
   }
   next();
 };
+// Set EJS as template engine
+app.set("view engine", "ejs");
 
+// Set the views folder (where your EJS templates will live)
+app.set("views", path.join(__dirname, "../public/views"));
 // ---------- ROUTES ----------
 app.use("/api/auth", require("./routes/auth.routes"));
+app.use("/api/theme", require("./routes/themes-route"));
 
 // ---------- PUBLIC PAGE ----------
 app.get("/", (req, res) => {
@@ -56,9 +61,14 @@ app.get("/", (req, res) => {
 });
 
 // ---------- PROTECTED PAGES ----------
-app.get("/index.html", isAuthenticated, (req, res) => {
-  res.sendFile(path.join(__dirname, "../public/index.html"));
-});
+// app.get("/index.html", isAuthenticated, (req, res) => {
+//   res.sendFile(path.join(__dirname, "../public/index.html"));
+// });
+
+const themeController = require("./controllers/theme.controller");
+
+// Render homepage with dynamic themes
+app.get("/index", isAuthenticated, themeController.index);
 
 // ---------- STATIC FILES ----------
 app.use(express.static(path.join(__dirname, "../public")));

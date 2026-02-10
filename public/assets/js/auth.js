@@ -193,7 +193,7 @@ if (loginBtn) {
         return;
       }
 
-      window.location.href = "/index.html";
+      window.location.href = "/index";
 
     } catch (err) {
       Loader.hide();
@@ -264,34 +264,34 @@ document.addEventListener("click", async (e) => {
 //   }
 // });
 
-function updateUserName(userName) {
-  const navbarNameEl = document.querySelector(".navbar-profile-name");
-  if (navbarNameEl) navbarNameEl.textContent = userName;
+// function updateUserName(userName) {
+//   const navbarNameEl = document.querySelector(".navbar-profile-name");
+//   if (navbarNameEl) navbarNameEl.textContent = userName;
 
-  const profileNameEl = document.querySelector(".profile-name h5");
-  if (profileNameEl) profileNameEl.textContent = userName;
-}
+//   const profileNameEl = document.querySelector(".profile-name h5");
+//   if (profileNameEl) profileNameEl.textContent = userName;
+// }
 
-document.addEventListener("DOMContentLoaded", async () => {
-  try {
-    const res = await fetch("/api/auth/getprofile", {
-      credentials: "include"
-    });
+// document.addEventListener("DOMContentLoaded", async () => {
+//   try {
+//     const res = await fetch("/api/auth/getprofile", {
+//       credentials: "include"
+//     });
 
-    if (!res.ok) return;
+//     if (!res.ok) return;
 
-    const data = await res.json();
-    updateUserName(data.user.name);
+//     const data = await res.json();
+//     updateUserName(data.user.name);
 
-    // Retry if navbar loads late
-    const observer = new MutationObserver(() => {
-      updateUserName(data.user.name);
-    });
+//     // Retry if navbar loads late
+//     const observer = new MutationObserver(() => {
+//       updateUserName(data.user.name);
+//     });
 
-    observer.observe(document.body, { childList: true, subtree: true });
+//     observer.observe(document.body, { childList: true, subtree: true });
 
-  } catch (err) {
-    console.error(err);
-  }
-});
+//   } catch (err) {
+//     console.error(err);
+//   }
+// });
 

@@ -21367,3 +21367,15 @@ position: relative;
     border-color: #505259;
     outline: none
 }
+.theme-title-overlay h3 {
+    align-items: center;
+    position: relative;
+    text-align: center;
+    height: 34px;
+    width: auto !important;
+    background-color: #353535b3;
+    color: #a5a5a5;
+    font-size: 15px;
+    font-weight: 600;
+    padding: 3px 0px 0px 0px;
+}
