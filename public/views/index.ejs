@@ -358,10 +358,12 @@
                             <h2 id="activeThemeTitle"><%= activeTheme ? activeTheme.themeName : "" %></h2>
                             <p id="activeThemeSubtitle"><%= activeTheme ? activeTheme.themeName : "" %></p>
 
-                            <a href="theme-settings.html" class="btn btn-primary btn-rounded mt-3">
+                            <a 
+                              href="/theme-settings/<%= activeTheme ? activeTheme._id : '' %>" 
+                              class="btn btn-primary btn-rounded mt-3">
                               Customize
                               <i class="mdi mdi-pencil ml-2"></i>
-                              </a>
+                            </a>
                           </div>
 
                           <!-- RIGHT IMAGE -->
@@ -405,22 +407,14 @@
               <div id="comingSoonOverlay" class="coming-soon hidden">
                   <h2>Coming Soon</h2>
               </div>
-            </div>
-          <!-- content-wrapper ends -->
-          <!-- partial:partials/_footer.html -->
-              <!-- <footer class="footer">
-                <div class="d-sm-flex justify-content-center justify-content-sm-between">
-                  <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © GlitchGone 2026</span>
-                </div>
-              </footer> -->
-          <!-- partial -->
+              <footer class="footer">
+                     <div class="d-sm-flex justify-content-center justify-content-sm-between">
+                       <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © GlitchGone 2026</span>
+                     </div>
+                   </footer>
         </div>
-        <!-- main-panel ends -->
-      </div>
-      <!-- page-body-wrapper ends -->
     </div>
-    <!-- container-scroller -->
-    <!-- plugins:js -->
+    </div>
      <script>
 
 const menuLinks = document.querySelectorAll(".menu-link");
@@ -467,8 +461,6 @@ function showComingSoon(){
 }
 
 </script>
-<!-- <script src="./assets/js/theme.js"></script> -->
-
     <script src="./assets/js/loader.js"></script>
     <script src="./assets/vendors/js/vendor.bundle.base.js"></script>
     <!-- endinject -->

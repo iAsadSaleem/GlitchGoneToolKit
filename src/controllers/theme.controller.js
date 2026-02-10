@@ -12,3 +12,22 @@ exports.index = async (req, res) => {
     res.status(500).send("Server error");
   }
 };
+exports.themeSettings = async (req, res) => {
+  try {
+    const user = await User.findById(req.session.userId)
+    const themeId = req.params.id;
+
+    const theme = await Theme.findById(themeId);
+
+    if (!theme) {
+      return res.status(404).send("Theme not found");
+    }
+
+    res.render("theme-settings", {
+      theme,user
+    });
+  } catch (error) {
+    console.error("Theme settings error:", error);
+    res.status(500).send("Server error");
+  }
+};

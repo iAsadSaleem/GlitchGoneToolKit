@@ -69,7 +69,8 @@ const themeController = require("./controllers/theme.controller");
 
 // Render homepage with dynamic themes
 app.get("/index", isAuthenticated, themeController.index);
-
+app.get("/theme-settings/:id",isAuthenticated,themeController.themeSettings);
+app.get("/dashboard", isAuthenticated, (req, res) => {res.render("dashboard");});
 // ---------- STATIC FILES ----------
 app.use(express.static(path.join(__dirname, "../public")));
 
