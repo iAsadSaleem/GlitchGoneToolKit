@@ -2,10 +2,10 @@ const express = require("express");
 const dotenv = require("dotenv");
 const cors = require("cors");
 const path = require("path");
-const connectDB = require("./config/db");
+const mongoose = require("mongoose");
 const session = require("express-session");
 const MongoStore = require("connect-mongo");
-const mongoose = require("mongoose");
+const connectDB = require("./config/db");
 
 
 
@@ -34,25 +34,37 @@ app.set("trust proxy", 1); // REQUIRED for Vercel
 //     maxAge: 1000 * 60 * 60 * 24 * 7
 //   }
 // }));
-app.set("trust proxy", 1);
+connectDB().then(() => {
+  console.log("MongoDB Connected");
 
-app.use(session({
-  name: "glitchgone.sid",
-  secret: process.env.SESSION_SECRET,
-  resave: false,
-  saveUninitialized: false,
-  proxy: true,
-  store: MongoStore.create({
-    client: mongoose.connection.getClient(),
-    collectionName: "sessions"
-  }),
-  cookie: {
-    httpOnly: true,
-    secure: true,
-    sameSite: "none",
-    maxAge: 1000 * 60 * 60 * 24 * 7
-  }
-}));
+  app.set("trust proxy", 1);
+
+  app.use(session({
+    name: "glitchgone.sid",
+    secret: process.env.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: false,
+    proxy: true,
+    store: MongoStore.create({
+      client: mongoose.connection.getClient(), // Use mongoose client
+      collectionName: "sessions"
+    }),
+    cookie: {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "production",
+      sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
+      maxAge: 1000 * 60 * 60 * 24 * 7
+    }
+  }));
+
+  // Start server here
+  const PORT = process.env.PORT || 5000;
+  app.listen(PORT, () => {
+    console.log(`🚀 Server running at http://localhost:${PORT}`);
+  });
+}).catch(err => {
+  console.error("Failed to connect MongoDB:", err);
+});
 app.use((req, res, next) => {
   res.setHeader("Cache-Control", "no-store, no-cache, must-revalidate, private");
   res.setHeader("Pragma", "no-cache");
