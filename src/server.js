@@ -34,20 +34,22 @@ app.set("trust proxy", 1); // REQUIRED for Vercel
 //     maxAge: 1000 * 60 * 60 * 24 * 7
 //   }
 // }));
+app.set("trust proxy", 1);
+
 app.use(session({
   name: "glitchgone.sid",
   secret: process.env.SESSION_SECRET,
   resave: false,
   saveUninitialized: false,
   proxy: true,
-    store: MongoStore.create({
+  store: MongoStore.create({
     client: mongoose.connection.getClient(),
     collectionName: "sessions"
   }),
   cookie: {
     httpOnly: true,
-    secure: process.env.NODE_ENV === "production",
-    sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
+    secure: true,
+    sameSite: "none",
     maxAge: 1000 * 60 * 60 * 24 * 7
   }
 }));
