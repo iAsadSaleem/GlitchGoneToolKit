@@ -31,3 +31,25 @@ exports.themeSettings = async (req, res) => {
     res.status(500).send("Server error");
   }
 };
+// POST /api/theme/select
+exports.selectTheme = async (req, res) => {
+  const { themeId } = req.body;
+
+  if (!themeId) return res.status(400).json({ message: "Theme ID required" });
+
+  try {
+    // Deactivate all themes first
+    await Theme.updateMany({}, { isActive: false });
+
+    // Activate the selected theme
+    const selectedTheme = await Theme.findByIdAndUpdate(themeId, { isActive: true }, { new: true });
+
+    return res.json({
+      message: "Theme selected successfully",
+      theme: selectedTheme
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Server error" });
+  }
+};

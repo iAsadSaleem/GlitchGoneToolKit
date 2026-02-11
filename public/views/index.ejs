@@ -415,6 +415,55 @@
         </div>
     </div>
     </div>
+    <script>
+  async function selectTheme(themeId) {
+    try {
+      const response = await fetch("/api/theme/select", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ themeId })
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        // Update the top selected theme card
+        document.getElementById("activeThemeTitle").innerText = data.theme.themeName;
+        document.getElementById("activeThemeSubtitle").innerText = data.theme.themeName;
+        document.getElementById("activeThemeImage").src = data.theme.imageUrl;
+
+        // Update the "Customize" button href
+        const customizeBtn = document.querySelector(".current-theme-card a.btn");
+        customizeBtn.href = `/theme-settings/${data.theme._id}`;
+
+        // Update the buttons in the grid
+        document.querySelectorAll(".selective-button").forEach(btn => {
+          btn.disabled = false;
+          btn.classList.remove("btn-success");
+          btn.classList.add("btn-primary");
+          btn.innerText = "Select";
+        });
+
+        // Disable the selected button
+        const selectedBtn = document.querySelector(`button[onclick="selectTheme('${themeId}')"]`);
+        selectedBtn.disabled = true;
+        selectedBtn.classList.remove("btn-primary");
+        selectedBtn.classList.add("btn-success");
+        selectedBtn.innerText = "Selected";
+
+      } else {
+        alert(data.message || "Failed to select theme");
+      }
+
+    } catch (error) {
+      console.error(error);
+      alert("Something went wrong");
+    }
+  }
+</script>
+
      <script>
 
 const menuLinks = document.querySelectorAll(".menu-link");
