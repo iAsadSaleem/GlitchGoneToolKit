@@ -417,6 +417,7 @@
     </div>
     <script>
   async function selectTheme(themeId) {
+    Loader.show();
     try {
       const response = await fetch("/api/theme/select", {
         method: "POST",
@@ -461,6 +462,7 @@
       console.error(error);
       alert("Something went wrong");
     }
+    Loader.hide();
   }
 </script>
 
