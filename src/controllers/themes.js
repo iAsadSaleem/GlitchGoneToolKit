@@ -17,7 +17,6 @@ exports.themes = async (req, res) => {
 };
 
 exports.getAllThemes = async (req, res) => {
-  console.log('get all api hit here');
   try {
     const themesdata = await themes.find().select("themeName imageUrl isActive").sort({ createdAt: -1 });
     res.status(200).json({

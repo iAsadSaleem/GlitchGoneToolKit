@@ -32,13 +32,13 @@ body {
 }
 
 .sidebar a:hover{
-background: #07a126d8;
+background: var(--sidebar-menu-hover-bg,#07a126d8);
  border-radius: 25px;
 }
 
 .sidebar a.active {
   border-radius: 13px;
-  background: #07a125;
+  background: var(--sidebar-menu-active-bg,#07a125);
   color: #fff;
 }
 
