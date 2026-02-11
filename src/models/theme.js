@@ -6,9 +6,7 @@ const themes = new mongoose.Schema(
     imageUrl: { type: String, required: true },
     isActive: { type: Boolean, default: false },
     themeData: { type: Map, of: String, required: true },
-    createdBy: {
-      type: String // admin / system / userId (optional)
-    }
+    createdBy: { type: String }
   },
   { timestamps: true }
 );

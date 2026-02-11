@@ -17,15 +17,32 @@ app.use(express.urlencoded({ extended: true }));
 app.set("trust proxy", 1); // REQUIRED for Vercel
 
 // ---------- SESSION (MUST BE BEFORE ROUTES) ----------
+// app.use(session({
+//   name: "glitchgone.sid",
+//   secret: process.env.SESSION_SECRET,
+//   resave: false,
+//   saveUninitialized: false,
+//   proxy: true,
+//   cookie: {
+//     httpOnly: true,
+//     secure: process.env.NODE_ENV === "production", // ✅ FIX
+//     sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
+//     maxAge: 1000 * 60 * 60 * 24 * 7
+//   }
+// }));
 app.use(session({
   name: "glitchgone.sid",
   secret: process.env.SESSION_SECRET,
   resave: false,
   saveUninitialized: false,
   proxy: true,
+  store: MongoStore.create({
+    mongoUrl: process.env.MONGO_URI,
+    collectionName: "sessions"
+  }),
   cookie: {
     httpOnly: true,
-    secure: process.env.NODE_ENV === "production", // ✅ FIX
+    secure: process.env.NODE_ENV === "production",
     sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
     maxAge: 1000 * 60 * 60 * 24 * 7
   }
@@ -81,3 +98,4 @@ const HOST = 'http://localhost';
 app.listen(PORT, () => {
   console.log(`🚀 Server running at ${HOST}:${PORT}`);
 });
+  
