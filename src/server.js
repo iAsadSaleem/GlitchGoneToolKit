@@ -46,8 +46,6 @@ app.use((req, res, next) => {
 
 // ---------- CONNECT TO MONGODB AND SET SESSION ----------
 connectDB().then(() => {
-  console.log("MongoDB Connected");
-
   // Session Middleware (must be AFTER MongoDB connected)
   app.use(session({
     name: "glitchgone.sid",
