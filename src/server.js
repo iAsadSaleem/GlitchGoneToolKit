@@ -5,6 +5,8 @@ const path = require("path");
 const connectDB = require("./config/db");
 const session = require("express-session");
 const MongoStore = require("connect-mongo");
+const mongoose = require("mongoose");
+
 
 
 dotenv.config();
@@ -38,8 +40,8 @@ app.use(session({
   resave: false,
   saveUninitialized: false,
   proxy: true,
-  store: MongoStore.create({
-    mongoUrl: process.env.MONGO_URI,
+    store: MongoStore.create({
+    client: mongoose.connection.getClient(),
     collectionName: "sessions"
   }),
   cookie: {
