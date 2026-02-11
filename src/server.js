@@ -55,7 +55,7 @@ app.use("/api/theme", require("./routes/themes-route"));
 // ---------- PUBLIC PAGE ----------
 app.get("/", (req, res) => {
   if (req.session.userId) {
-    return res.redirect("/index.html");
+    return res.redirect("/index");
   }
   res.sendFile(path.join(__dirname, "../public/login-signup.html"));
 });
