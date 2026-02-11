@@ -84,6 +84,24 @@ connectDB().then(() => {
   app.get("/theme-settings/:id", isAuthenticated, themeController.themeSettings);
   app.get("/dashboard", isAuthenticated, (req, res) => res.render("dashboard"));
 
+  // ---------- 404 PAGE ----------
+  app.use((req, res, next) => {
+    res.status(404);
+
+    // If you have a custom EJS 404 page
+    if (req.accepts('html')) {
+      return res.render('404'); // Make a 404.ejs inside your views folder
+    }
+
+    // If client expects JSON
+    if (req.accepts('json')) {
+      return res.json({ error: "404 Not Found" });
+    }
+
+    // Default plain text
+    res.type('txt').send('404 Not Found');
+  });
+
   // ---------- START SERVER ----------
   const PORT = process.env.PORT || 5000;
   const HOST = 'http://localhost';
