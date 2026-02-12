@@ -21399,3 +21399,7 @@ position: relative;
 .text-muted{
   color: rgb(201 201 201) !important;
 }
+.theme-name{
+  padding: 20px 0px 20px 13px;
+  color: white;
+}
