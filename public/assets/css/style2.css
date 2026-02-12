@@ -21396,3 +21396,6 @@ position: relative;
 .name-color{
   color: white;
 }
+.text-muted{
+  color: rgb(201 201 201) !important;
+}
