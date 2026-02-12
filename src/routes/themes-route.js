@@ -15,6 +15,8 @@ router.post("/", createTheme);
 
 router.get("/active", getActiveTheme);
 router.post("/select", themeController.selectTheme);
+router.post("/draft", themeController.saveDraft);
+router.post("/publish", themeController.publishTheme);
 
 
 module.exports = router;

@@ -1,3 +1,4 @@
+
 @-moz-keyframes flash {
   0% {
     opacity: 1; }
@@ -20519,7 +20520,7 @@ div.tagsinput {
   font-weight: normal;
   padding: 0;
   width: 300px;
-  z-index: 11;
+  z-index: 1200;
   transition: width 0.25s ease, background 0.25s ease;
   -webkit-transition: width 0.25s ease, background 0.25s ease;
   -moz-transition: width 0.25s ease, background 0.25s ease;
@@ -21378,4 +21379,20 @@ position: relative;
     font-size: 15px;
     font-weight: 600;
     padding: 3px 0px 0px 0px;
+}
+.container-fluid{
+  --bs-gutter-x: 0 !important;
+    --bs-gutter-y: 0 !important;
+    width: 100%;
+    padding-right: calc(var(--bs-gutter-x) * .5);
+    padding-left: calc(var(--bs-gutter-x) * .5);
+    margin-right: auto;
+    margin-left: auto;
+}
+.navbar .navbar-menu-wrapper .navbar-toggler{
+      left: 260px;
+    position: relative;
+}
+.name-color{
+  color: white;
 }

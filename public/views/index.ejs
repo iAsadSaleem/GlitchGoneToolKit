@@ -130,9 +130,9 @@
             <a class="navbar-brand brand-logo-mini" href="index"><img src="./assets/images/logo-mini.svg" alt="logo" /></a>
           </div>
           <div class="navbar-menu-wrapper flex-grow d-flex align-items-stretch">
-            <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
+            <!-- <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
               <span class="mdi mdi-menu"></span>
-            </button>
+            </button> -->
             <!--Commented SearchBar -->
             <!-- <ul class="navbar-nav w-100">
               <li class="nav-item w-100">
@@ -390,10 +390,11 @@
                                 <div class="d-flex justify-content-between align-items-center">
                                   <h6 class="text-muted font-weight-normal mb-0"><%= theme.themeName %></h6>
                                   <button 
-                                    class="btn btn-<%= theme.isActive ? "success" : "primary" %> btn-rounded btn-fw btn-sm selective-button"
-                                    <%= theme.isActive ? "disabled" : "" %>
+                                    class="btn btn-<%= theme._id.toString() === activeThemeId ? "success" : "primary" %> btn-rounded btn-fw btn-sm"
+                                    <%= theme._id.toString() === activeThemeId ? "disabled" : "" %>
                                     onclick="selectTheme('<%= theme._id %>')">
-                                    <%= theme.isActive ? "Selected" : "Select" %>
+
+                                    <%= theme._id.toString() === activeThemeId ? "Selected" : "Select" %>
                                   </button>
                                 </div>
                               </div>
