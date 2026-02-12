@@ -127,7 +127,7 @@
         <!-- partial:partials/_navbar.html -->
         <nav class="navbar p-0 fixed-top d-flex flex-row">
           <div class="navbar-brand-wrapper d-flex d-lg-none align-items-center justify-content-center">
-            <a class="navbar-brand brand-logo-mini" href="index"><img src="./assets/images/logo-mini.svg" alt="logo" /></a>
+            <a class="navbar-brand brand-logo-mini" href="index"><img src="./assets/images/companylogo.png" alt="logo" /></a>
           </div>
           <div class="navbar-menu-wrapper flex-grow d-flex align-items-stretch">
             <!-- <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
@@ -344,65 +344,54 @@
                       </div>
                     </div>
                   </div>
-                  <div class="row">
-                    <div class="col-7 grid-margin stretch-card">
-                      <div class="card current-theme-card">
-                        <div class="card-body d-flex align-items-center justify-content-between">
+                <div class="row">
+                  <div class="col-7 grid-margin stretch-card">
+                    <div class="card current-theme-card">
+                      <div class="card-body d-flex align-items-center justify-content-between">
 
-                          <!-- LEFT CONTENT -->
-                          <div class="theme-info">
-                            <span class="badge badge-primary-soft mb-3">
-                              Your current theme
-                            </span>
+                        <div class="theme-info">
+                          <span class="badge badge-primary-soft mb-3">Your current theme</span>
+                          <h2 id="activeThemeTitle"><%= activeTheme ? activeTheme.themeName : "" %></h2>
+                          <p id="activeThemeSubtitle"><%= activeTheme ? activeTheme.themeName : "" %></p>
 
-                            <h2 id="activeThemeTitle"><%= activeTheme ? activeTheme.themeName : "" %></h2>
-                            <p id="activeThemeSubtitle"><%= activeTheme ? activeTheme.themeName : "" %></p>
-
-                            <a 
-                              href="/theme-settings/<%= activeTheme ? activeTheme._id : '' %>" 
-                              class="btn btn-primary btn-rounded mt-3">
-                              Customize
-                              <i class="mdi mdi-pencil ml-2"></i>
-                            </a>
-                          </div>
-
-                          <!-- RIGHT IMAGE -->
-                          <div class="theme-preview">
-                            <img id="activeThemeImage" src="<%= activeTheme ? activeTheme.imageUrl : '' %>" alt="Theme Preview">
-                          </div>
-
+                          <a href="/theme-settings/<%= activeTheme ? activeTheme._id : '' %>" class="btn btn-primary btn-rounded mt-3">
+                            Customize <i class="mdi mdi-pencil ml-2"></i>
+                          </a>
                         </div>
+
+                        <div class="theme-preview">
+                          <img id="activeThemeImage" src="<%= activeTheme ? activeTheme.imageUrl : '' %>" alt="Theme Preview">
+                        </div>
+
                       </div>
                     </div>
                   </div>
+                </div>
                   <div class="row" id="themesGrid">
-                      <% themes.forEach(theme => { %>
-                        <div class="col-xl-3 col-sm-6 grid-margin stretch-card">
-                          <div class="card theme-card">
-                            <div class="card-body p-0">
-                              <div class="theme-image-wrapper">
-                                <img src="<%= theme.imageUrl %>" alt="<%= theme.themeName %>" class="theme-image">
-                                <div class="theme-title-overlay">
-                                  <h3 class="mb-0"><%= theme.themeName %></h3>
-                                </div>
-                              </div>
-                              <div class="p-3">
-                                <div class="d-flex justify-content-between align-items-center">
-                                  <h6 class="text-muted font-weight-normal mb-0"><%= theme.themeName %></h6>
-                                  <button 
-                                    class="btn btn-<%= theme._id.toString() === activeThemeId ? "success" : "primary" %> btn-rounded btn-fw btn-sm"
-                                    <%= theme._id.toString() === activeThemeId ? "disabled" : "" %>
-                                    onclick="selectTheme('<%= theme._id %>')">
-
-                                    <%= theme._id.toString() === activeThemeId ? "Selected" : "Select" %>
-                                  </button>
-                                </div>
-                              </div>
+                  <% themes.forEach(theme => { %>
+                    <div class="col-xl-3 col-sm-6 grid-margin stretch-card">
+                      <div class="card theme-card">
+                        <div class="card-body p-0">
+                          <div class="theme-image-wrapper">
+                            <img src="<%= theme.imageUrl %>" alt="<%= theme.themeName %>" class="theme-image">
+                            <div class="theme-title-overlay"><h3 class="mb-0"><%= theme.themeName %></h3></div>
+                          </div>
+                          <div class="p-3">
+                            <div class="d-flex justify-content-between align-items-center">
+                              <h6 class="text-muted font-weight-normal mb-0"><%= theme.themeName %></h6>
+                              <button 
+                                class="btn btn-<%= theme._id.toString() === activeThemeId ? 'success' : 'primary' %> btn-rounded btn-fw btn-sm selective-button"
+                                <%= theme._id.toString() === activeThemeId ? 'disabled' : '' %>
+                                onclick="selectTheme('<%= theme._id %>')">
+                                <%= theme._id.toString() === activeThemeId ? 'Selected' : 'Select' %>
+                              </button>
                             </div>
                           </div>
                         </div>
-                      <% }) %>
+                      </div>
                     </div>
+                  <% }) %>
+                </div>
                 </div>
               </div>
               <div id="comingSoonOverlay" class="coming-soon hidden">
@@ -417,54 +406,55 @@
     </div>
     </div>
     <script>
-  async function selectTheme(themeId) {
-    Loader.show();
-    try {
-      const response = await fetch("/api/theme/select", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({ themeId })
-      });
+ async function selectTheme(themeId) {
+  Loader.show();
+  try {
+    const response = await fetch("/api/theme/select", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ themeId })
+    });
 
-      const data = await response.json();
+    const data = await response.json();
+    console.log("Response from backend:", data);
 
-      if (response.ok) {
-        // Update the top selected theme card
-        document.getElementById("activeThemeTitle").innerText = data.theme.themeName;
-        document.getElementById("activeThemeSubtitle").innerText = data.theme.themeName;
-        document.getElementById("activeThemeImage").src = data.theme.imageUrl;
-
-        // Update the "Customize" button href
-        const customizeBtn = document.querySelector(".current-theme-card a.btn");
-        customizeBtn.href = `/theme-settings/${data.theme._id}`;
-
-        // Update the buttons in the grid
-        document.querySelectorAll(".selective-button").forEach(btn => {
-          btn.disabled = false;
-          btn.classList.remove("btn-success");
-          btn.classList.add("btn-primary");
-          btn.innerText = "Select";
-        });
-
-        // Disable the selected button
-        const selectedBtn = document.querySelector(`button[onclick="selectTheme('${themeId}')"]`);
-        selectedBtn.disabled = true;
-        selectedBtn.classList.remove("btn-primary");
-        selectedBtn.classList.add("btn-success");
-        selectedBtn.innerText = "Selected";
-
-      } else {
-        alert(data.message || "Failed to select theme");
-      }
-
-    } catch (error) {
-      console.error(error);
-      alert("Something went wrong");
+    if (!response.ok) {
+      alert(data.message || "Failed to select theme");
+      return;
     }
-    Loader.hide();
+
+    const theme = data.theme;
+    if (!theme) {
+      alert("Selected theme not found. Please try again.");
+      return;
+    }
+    // Update top card
+    document.getElementById("activeThemeTitle").innerText = theme.themeName;
+    document.getElementById("activeThemeSubtitle").innerText = theme.themeName;
+    document.getElementById("activeThemeImage").src = theme.imageUrl;
+
+    // Update Customize button
+    document.querySelector(".current-theme-card a.btn").href = `/theme-settings/${theme._id}`;
+
+    // Update buttons in grid
+    document.querySelectorAll(".selective-button").forEach(btn => {
+      btn.disabled = false;
+      btn.classList.remove("btn-success");
+      btn.classList.add("btn-primary");
+      btn.innerText = "Select";
+    });
+
+    const selectedBtn = document.querySelector(`button[onclick="selectTheme('${themeId}')"]`);
+    selectedBtn.disabled = true;
+    selectedBtn.classList.remove("btn-primary");
+    selectedBtn.classList.add("btn-success");
+    selectedBtn.innerText = "Selected";
+Loader.hide();
+  } catch (error) {
+    console.error(error);
+    alert("Something went wrong");
   }
+}
 </script>
 
      <script>
