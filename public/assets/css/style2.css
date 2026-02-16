@@ -21278,7 +21278,7 @@ position: relative;
 .theme-inline-input-logo-url{
       position: relative;
     left: 20px !important;
-    width: 216px;
+    width: auto;
     flex: 0 1 120px;
     text-align: center;
     background: #22242E;

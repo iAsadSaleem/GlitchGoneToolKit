@@ -37,7 +37,6 @@ exports.index = async (req, res) => {
     res.status(500).send("Server error");
   }
 };
-
 exports.themeSettings = async (req, res) => {
   try {
     const user = await User.findById(req.session.userId)
@@ -94,7 +93,6 @@ exports.selectTheme = async (req, res) => {
     res.status(500).json({ message: "Server error" });
   }
 };
-
 exports.saveDraft = async (req, res) => {
   try {
     const { themeId, customData } = req.body;
@@ -116,7 +114,6 @@ exports.saveDraft = async (req, res) => {
     res.status(500).json({ message: "Failed to save draft" });
   }
 };
-
 exports.publishTheme = async (req, res) => {
   try {
     const { themeId, customData } = req.body;
