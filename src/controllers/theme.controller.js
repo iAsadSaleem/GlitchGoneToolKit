@@ -59,33 +59,24 @@ exports.themeSettings = async (req, res) => {
     res.status(500).send("Server error");
   }
 };
-exports.selectTheme = async (req, res) => {
+  exports.selectTheme = async (req, res) => {
   const { themeId } = req.body;
   const userId = req.session.userId;
 
-  if (!themeId) return res.status(400).json({ message: "Theme ID required" });
+  if (!themeId) {
+    return res.status(400).json({ message: "Theme ID required" });
+  }
 
   try {
-    // Deactivate all themes for this user
-    await UserTheme.updateMany({ userId }, { isActive: false });
+    const userTheme = await UserTheme.findOneAndUpdate(
+      { userId },                // find by user only
+      { themeId, isActive: true },
+      { new: true, upsert: true } // create if not exists
+    ).populate("themeId");
 
-    // Find or create the UserTheme
-    let userTheme = await UserTheme.findOne({ userId, themeId });
-
-    if (!userTheme) {
-      userTheme = await UserTheme.create({ userId, themeId, isActive: true });
-    } else {
-      userTheme.isActive = true;
-      await userTheme.save();
-    }
-
-    // Populate themeId to get the actual theme data
-    await userTheme.populate("themeId");
-
-    // Send the populated theme
     res.json({
       message: "Theme selected successfully",
-      theme: userTheme.themeId // <--- this must exist
+      theme: userTheme.themeId
     });
 
   } catch (error) {
@@ -93,6 +84,7 @@ exports.selectTheme = async (req, res) => {
     res.status(500).json({ message: "Server error" });
   }
 };
+
 exports.saveDraft = async (req, res) => {
   try {
     const { themeId, customData } = req.body;

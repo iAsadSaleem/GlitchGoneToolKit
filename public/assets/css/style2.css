@@ -21162,7 +21162,7 @@ div.tagsinput {
   align-items: center;
   gap: 0px;
   background: #22242E;
-  border: 1px solid #505259;
+  border: 1px solid #2a2d36;
   border-radius: 10px;
   
   height:   45px;
@@ -21386,7 +21386,7 @@ position: relative;
     width: 100%;
     padding-right: calc(var(--bs-gutter-x) * .5);
     padding-left: calc(var(--bs-gutter-x) * .5);
-    margin-right: auto;
+    margin-right: auto; 
     margin-left: auto;
 }
 .navbar .navbar-menu-wrapper .navbar-toggler{
