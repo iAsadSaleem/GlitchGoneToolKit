@@ -880,19 +880,79 @@
         <div class="toast-body" id="toastBody"></div>
       </div>
     </div>
+    <script>
+  const iframe = document.querySelector("iframe");
+
+  const logoUrlInput = document.getElementById("logo-url");
+  const heightInput = document.getElementById("heightInput");
+  const widthInput = document.getElementById("widthInput");
+  const heightRange = document.getElementById("heightRange");
+  const widthRange = document.getElementById("widthRange");
+
+  function updateLogo() {
+    const logoSettings = {
+      type: "UPDATE_LOGO",
+      url: logoUrlInput.value,
+      height: heightInput.value,
+      width: widthInput.value
+    };
+
+    iframe.contentWindow.postMessage(logoSettings, "*");
+  }
+
+  // URL change
+  logoUrlInput.addEventListener("input", updateLogo);
+
+  // Height sync
+  heightInput.addEventListener("input", function () {
+    heightRange.value = this.value;
+    updateLogo();
+  });
+
+  heightRange.addEventListener("input", function () {
+    heightInput.value = this.value;
+    updateLogo();
+  });
+
+  // Width sync
+  widthInput.addEventListener("input", function () {
+    widthRange.value = this.value;
+    updateLogo();
+  });
+
+  widthRange.addEventListener("input", function () {
+    widthInput.value = this.value;
+    updateLogo();
+  });
+</script>
+    <script>
+
+      
+  const fontSelect = document.getElementById("fontSelect");
+  fontSelect.addEventListener("change", function () {
+    const selectedFont = this.value;
+
+    // Send font to iframe
+    iframe.contentWindow.postMessage({
+      type: "UPDATE_FONT",
+      font: selectedFont
+    }, "*");
+
+    // Also save globally
+    localStorage.setItem("dashboardFontFamily", selectedFont);
+  });
+</script>
     <!-- container-scroller -->
     <!-- plugins:js -->
     <script src="https://cdn.jsdelivr.net/npm/@simonwep/pickr"></script>
     <script>
      let confirmAction = null; // will hold the function to execute
-
       function showConfirm(message, action) {
         const modal = new bootstrap.Modal(document.getElementById('confirmModal'));
         document.getElementById('confirmModalBody').innerText = message;
         confirmAction = action; // store the function to run if yes is clicked
         modal.show();
       }
-
       // Attach event to Yes button
       document.getElementById('confirmYesBtn').addEventListener('click', async () => {
           if (confirmAction) {
@@ -904,8 +964,6 @@
             modal.hide(); // safely hides modal
           }
         });
-
-
       function collectThemeData() {
         // replace with your actual theme fields
         return {
@@ -913,7 +971,6 @@
           backgroundColor: document.getElementById("backgroundColor")?.value
         };
       }
-
       function saveDraft() {
         const themeId = document.getElementById("themeId").value;
         showConfirm("Are you sure you want to save the draft?", async () => {
@@ -931,7 +988,6 @@
           toast.show();        
         });
       }
-
       function publishTheme() {
         const themeId = document.getElementById("themeId").value;
         showConfirm("Are you sure you want to publish this theme?", async () => {

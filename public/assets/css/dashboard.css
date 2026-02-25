@@ -5,12 +5,16 @@
   --primary: #2563eb;
   --text-muted: #6b7280;
   --sidebar-menu-bg: #1c1c1c; 
+  --dashboard-font-family: Arial, sans-serif;
+  --logo-url: url('https://msgsndr-private.storage.googleapis.com/companyPhotos/47b7e157-d197-4ce5-9a94-b697c258702a.png');
+  --logo-height: 97px;
+  --logo-width: 97px;
 }
 
 /* Layout */
 body {
   background: var(--bg);
-  font-family: Inter, sans-serif;
+    font-family: var(--dashboard-font-family);
 }
 
 .sidebar {
@@ -100,13 +104,15 @@ background: var(--sidebar-menu-hover-bg,#07a126d8);
   padding: 4px 8px;
   border-radius: 6px;
 }
-.companylogo-dashboard{
-    left: 43px;
-    
-    height: 97px;
-    width: 97px;
-    position: relative;
-   }
+.companylogo-dashboard {
+  left: 43px;
+  position: relative;
+
+  height: var(--logo-height);
+  width: var(--logo-width);
+
+  content: var(--logo-url);
+}
 .sidebarselector {
     border-radius: 8px;
     height: 2.6rem;
